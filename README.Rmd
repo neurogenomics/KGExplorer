@@ -17,35 +17,75 @@ owner <- strsplit(URL,"/")[[1]][4]
 repo <- strsplit(URL,"/")[[1]][5]
 ```
 
-## ``r pkg``: `r gsub("\n","",title)`
+## Introduction
 
-### `r gsub("\n","",description)`
- 
+KGExplorer is an R package designed to facilitate seamless exploration,
+manipulation, and visualization of biomedical knowledge graphs and ontologies.
+By integrating robust tools for data retrieval, filtering, mapping, and graph
+visualization, KGExplorer empowers researchers to work with complex biomedical
+datasets from resources like the the
+[Monarch Initiative](https://monarchinitiative.org) and
+[Human Phenotype Ontology (HPO)](https://hpo.jax.org). With its modular design
+and extensive caching support, the package streamlines workflows by reducing
+redundant downloads and providing efficient tools for managing large-scale
+biomedical data.
+
+Built on the foundations of powerful R libraries like tidygraph, data.table,
+ggplot2, and plotly, KGExplorer offers intuitive functions to manipulate and
+visualize knowledge graphs. Researchers can subset graphs, convert between graph
+representations, map between diverse ID systems, and generate interactive 3D
+visualizations of ontologies. KGExplorer is tailored for biomedical researchers
+seeking an efficient, flexible toolkit to harness the potential of knowledge
+graphs for scientific discovery.
+
+`KGExplorer` was developed by the [Neurogenomics
+Lab](https://www.neurogenomics.co.uk/) at Imperial College London, along
+with valuable feedback provided by the HPO team. This package is still
+actively evolving and growing. Community engagement is welcome and any
+suggestions can be submitted as an
+[Issue](https://github.com/neurogenomics/KGExplorer/issues) or [Pull
+Request](https://github.com/neurogenomics/KGExplorer/pulls).
+
+## Installation 
+
+Within R: 
+
+```R
+if(!require("remotes")) install.packages("remotes")
+
+remotes::install_github("`r paste(owner,repo,sep='/')`")
+library(`r pkg`)
+```
+
+## Documentation 
+
+#### [Website](https://`r owner`.github.io/`r pkg`) 
+#### [Get started](https://`r owner`.github.io/`r pkg`/articles/`r pkg`)
+#### [Docker/Singularity Container](https://`r owner`.github.io/`r pkg`/articles/docker.html)
+
+## Citation
+
 If you use ``r pkg``, please cite: 
 
 <!-- Modify this by editing the file: inst/CITATION  -->
 > `r utils::citation(pkg)$textVersion`
 
-## Installation 
+## Contact
 
-```R
-if(!require("BiocManager")) install.packages("BiocManager")
+### [Neurogenomics Lab](https://www.neurogenomics.co.uk)   
+UK Dementia Research Institute  
+Department of Brain Sciences  
+Faculty of Medicine  
+Imperial College London  
+[GitHub](https://github.com/neurogenomics)
 
-BiocManager::install("`r paste(owner,repo,sep='/')`")
-library(`r pkg`)
-```
-## Documentation 
+## Session Info 
 
-### [Website](https://`r owner`.github.io/`r repo`) 
-### [Getting started](https://`r owner`.github.io/`r repo`/articles/`r pkg`) 
+<details> 
 
-<hr>
-
-## Session Info
-
-<details>
-```{r}
+```{r Session Info}
 utils::sessionInfo()
 ```
-</details>
 
+</details>  
+<hr>
