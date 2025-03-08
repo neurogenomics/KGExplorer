@@ -15,14 +15,61 @@ status](https://github.com/neurogenomics/KGExplorer/workflows/rworkflows/badge.s
 Authors: <i>Brian Schilder, Hiranyamaya Dash</i>  
 </h4>
 <h4>  
-README updated: <i>Dec-18-2024</i>  
+README updated: <i>Jan-10-2025</i>  
 </h4>
 
 <!-- To modify Package/Title/Description/Authors fields, edit the DESCRIPTION file -->
 
-## `KGExplorer`: Biomedical Knowledge Network Construction and Analysis
+## Introduction
 
-### Query, construct, and analyse large-scale biomedical knowledge graphs and ontologies.
+KGExplorer is an R package designed to facilitate seamless exploration,
+manipulation, and visualization of biomedical knowledge graphs and
+ontologies. By integrating robust tools for data retrieval, filtering,
+mapping, and graph visualization, KGExplorer empowers researchers to
+work with complex biomedical datasets from resources like the the
+[Monarch Initiative](https://monarchinitiative.org) and [Human Phenotype
+Ontology (HPO)](https://hpo.jax.org). With its modular design and
+extensive caching support, the package streamlines workflows by reducing
+redundant downloads and providing efficient tools for managing
+large-scale biomedical data.
+
+Built on the foundations of powerful R libraries like tidygraph,
+data.table, ggplot2, and plotly, KGExplorer offers intuitive functions
+to manipulate and visualize knowledge graphs. Researchers can subset
+graphs, convert between graph representations, map between diverse ID
+systems, and generate interactive 3D visualizations of ontologies.
+KGExplorer is tailored for biomedical researchers seeking an efficient,
+flexible toolkit to harness the potential of knowledge graphs for
+scientific discovery.
+
+`KGExplorer` was developed by the [Neurogenomics
+Lab](https://www.neurogenomics.co.uk/) at Imperial College London, along
+with valuable feedback provided by the HPO team. This package is still
+actively evolving and growing. Community engagement is welcome and any
+suggestions can be submitted as an
+[Issue](https://github.com/neurogenomics/KGExplorer/issues) or [Pull
+Request](https://github.com/neurogenomics/KGExplorer/pulls).
+
+## Installation
+
+Within R:
+
+``` r
+if(!require("remotes")) install.packages("remotes")
+
+remotes::install_github("neurogenomics/KGExplorer")
+library(KGExplorer)
+```
+
+## Documentation
+
+#### [Website](https://neurogenomics.github.io/KGExplorer)
+
+#### [Get started](https://neurogenomics.github.io/KGExplorer/articles/KGExplorer)
+
+#### [Docker/Singularity Container](https://neurogenomics.github.io/KGExplorer/articles/docker.html)
+
+## Citation
 
 If you use `KGExplorer`, please cite:
 
@@ -33,22 +80,15 @@ If you use `KGExplorer`, please cite:
 > type-specific gene targets underlying thousands of rare diseases and
 > subtraits. medRxiv, <https://doi.org/10.1101/2023.02.13.23285820>
 
-## Installation
+## Contact
 
-``` r
-if(!require("BiocManager")) install.packages("BiocManager")
+### [Neurogenomics Lab](https://www.neurogenomics.co.uk)
 
-BiocManager::install("neurogenomics/KGExplorer")
-library(KGExplorer)
-```
-
-## Documentation
-
-### [Website](https://neurogenomics.github.io/KGExplorer)
-
-### [Getting started](https://neurogenomics.github.io/KGExplorer/articles/KGExplorer)
-
-<hr>
+UK Dementia Research Institute  
+Department of Brain Sciences  
+Faculty of Medicine  
+Imperial College London  
+[GitHub](https://github.com/neurogenomics)
 
 ## Session Info
 
@@ -94,3 +134,5 @@ utils::sessionInfo()
     ## [46] htmltools_0.5.8.1
 
 </details>
+
+<hr>

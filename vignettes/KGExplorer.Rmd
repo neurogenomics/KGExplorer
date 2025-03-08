@@ -17,22 +17,63 @@ pkg <- read.dcf("../DESCRIPTION", fields = "Package")[1]
 library(pkg, character.only = TRUE)
 ```
 
+# Introduction
 
-```R
-library(`r pkg`)
-```
+KGExplorer is an R package designed for efficient exploration and manipulation
+of biomedical knowledge graphs and ontologies. Its core functionalities include:
+  
+- **Graph Manipulation and Visualization**: Tools like `plot_graph_3d()` and
+`plot_ggnetwork()` enable intuitive visualization and analysis of ontological
+data.
+  
+- **Data Retrieval**: Functions such as `get_mondo_maps()` and `get_ontology()`
+facilitate fetching data from prominent biomedical databases.
+
+- **ID Mapping**: Mapping utilities like `map_genes_monarch()` and `map_mondo()`
+allow seamless conversion between various identifier systems.
+
+- **Graph Filtering**: With functions like `filter_graph()` and `filter_kg()`,
+users can subset knowledge graphs to focus on relevant subsets.
+
+- **Graph Conversion**: Utilities such as `graph_to_dt()` and
+`graph_to_plotly()` provide flexibility to transform knowledge graphs into
+different data formats or visualization-ready structures.
+
+The package leverages robust R libraries such as `tidygraph`, `data.table`, and
+popular plotting tools including `plotly` and `ggplot2`. KGExplorer adopts a
+modular design, with dedicated functions for data retrieval, manipulation,
+visualization, and utility operations. Comprehensive caching support ensures
+efficient handling of large datasets, reducing the need for repeated downloads.
 
 # Use cases
 
+The following examples illustrate how KGExplorer can be used to extract
+meaningful insights from biomedical knowledge graphs. Each use case highlights
+key functionalities of the package and demonstrates practical applications in
+biomedical research.
+
+To explore additional functionalities and find detailed documentation for all
+available functions, users can refer to the [KGExplorer reference guide](https://neurogenomics.github.io/KGExplorer/reference/index.html).
+
 ## Extract disease/phenotype-cell type associations
 
+The package provides functionality to extract associations between
+diseases/phenotypes and cell types. This can help researchers understand the
+relationships and interactions between different biological entities.
+
 ```{r, eval=FALSE}
+# Get the Monarch knowledge graph
 g <- get_monarch_kg()
+
+# Filter the graph to include only edges between diseases/phenotypes and cell
+# types
 g2 <- filter_kg(g, 
                 to_categories = c("biolink:Disease",
                                   "biolink:PhenotypicFeature"),
                 from_categories = "biolink:Cell")
-plot_graph_visnetwork(g2, 
+
+# Plot the filtered graph using visNetwork
+plot_graph_visnetwork(g2,
                       selectedBy = "id",
                       label_var = "name",
                       layout = "layout_nicely",
@@ -42,31 +83,54 @@ plot_graph_visnetwork(g2,
 
 ## Assess known animal models of human phenotypes
 
+The package includes tools to assess known animal models of human phenotypes,
+which can be crucial for translational research and understanding disease
+mechanisms.
+
 ```{r, eval=FALSE}
+# Map uPheno data
 dat <- map_upheno_data()
+
+# Plot the mapped uPheno data
 upheno_plots <- plot_upheno(dat)
 ```
 
 ## Link diseases to phenotypes to genes to variants 
 
+Users can link diseases to phenotypes, genes, and variants, providing a
+comprehensive view of the genetic and phenotypic landscape. This can aid in
+identifying potential genetic markers and understanding the genetic basis of
+diseases.
+
 ```{r, eval=FALSE}
+# Link Monarch data to create a graph with variant-disease, variant-phenotype,
+# and variant-gene associations
 gm <- link_monarch(maps = list(
-  c("variant","disease"),
-  c("variant","phenotype"),
-  c("variant","gene")
+  c("variant", "disease"),
+  c("variant", "phenotype"),
+  c("variant", "gene")
 ))
+
+# Join the linked graph with the original graph
 gm2 <- tidygraph::graph_join(gm,g)
+
+# Filter the graph to include only specific categories of nodes
 gm2 <- filter_graph(gm2,
                     node_filters = list(category=c("disease",
                                                    "phenotype",
                                                    "phenotypicfeature",
-                                                   "gene","variant")))
-gm3 <- filter_graph(g = gm2,
-                    size=20000)
+                                                   "gene",
+                                                   "variant")))
+
+# Further filter the graph to limit the size
+gm3 <- filter_graph(g = gm2, size = 20000)
+
+# Update vertex attributes for category and name
 igraph::vertex_attr(gm3,"category") <- 
-  tolower(gsub("biolink:","",igraph::vertex_attr(gm3,"category")))
+  tolower(gsub("biolink:","", igraph::vertex_attr(gm3,"category")))
 igraph::vertex_attr(gm3,"name") <- igraph::vertex_attr(gm3,"id")
 
+# Plot the final graph using visNetwork
 plot_graph_visnetwork(gm3, 
                       selectedBy = "category",
                       label_var = "name",
