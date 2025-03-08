@@ -19,10 +19,10 @@ repo <- strsplit(URL,"/")[[1]][5]
 
 ## Introduction
 
-KGExplorer is an R package designed to facilitate seamless exploration,
+`KGExplorer` is an R package designed to facilitate seamless exploration,
 manipulation, and visualization of biomedical knowledge graphs and ontologies.
 By integrating robust tools for data retrieval, filtering, mapping, and graph
-visualization, KGExplorer empowers researchers to work with complex biomedical
+visualization, `KGExplorer` empowers researchers to work with complex biomedical
 datasets from resources like the the
 [Monarch Initiative](https://monarchinitiative.org) and
 [Human Phenotype Ontology (HPO)](https://hpo.jax.org). With its modular design
@@ -30,11 +30,11 @@ and extensive caching support, the package streamlines workflows by reducing
 redundant downloads and providing efficient tools for managing large-scale
 biomedical data.
 
-Built on the foundations of powerful R libraries like tidygraph, data.table,
-ggplot2, and plotly, KGExplorer offers intuitive functions to manipulate and
+Built on the foundations of powerful R libraries like `tidygraph`, `data.table`,
+`ggplot2`, and `plotly`, `KGExplorer` offers intuitive functions to manipulate and
 visualize knowledge graphs. Researchers can subset graphs, convert between graph
 representations, map between diverse ID systems, and generate interactive 3D
-visualizations of ontologies. KGExplorer is tailored for biomedical researchers
+visualizations of ontologies. `KGExplorer` is tailored for biomedical researchers
 seeking an efficient, flexible toolkit to harness the potential of knowledge
 graphs for scientific discovery.
 
@@ -43,8 +43,7 @@ Lab](https://www.neurogenomics.co.uk/) at Imperial College London, along
 with valuable feedback provided by the HPO team. This package is still
 actively evolving and growing. Community engagement is welcome and any
 suggestions can be submitted as an
-[Issue](https://github.com/neurogenomics/KGExplorer/issues) or [Pull
-Request](https://github.com/neurogenomics/KGExplorer/pulls).
+[Issue](https://github.com/neurogenomics/KGExplorer/issues) or [Pull Request](https://github.com/neurogenomics/KGExplorer/pulls).
 
 ## Installation 
 

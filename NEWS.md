@@ -5,7 +5,8 @@
 * Merge fixes by @HDash https://github.com/neurogenomics/KGExplorer/pull/2
 * `dt_to_kg`: fix reference to graph `g`.
 * `get_hpo`
-  - Remove ported function to avoid conflicting namespaces. Instead, simply use `get_ontology("hpo")`
+  - Remove ported function to avoid conflicting namespaces. 
+    Instead, simply use `get_ontology("hpo")`
 
 # KGExplorer 0.99.05
 

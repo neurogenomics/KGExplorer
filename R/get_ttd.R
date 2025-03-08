@@ -1,7 +1,9 @@
 #' @describeIn get_ get_
 #' @export
 #' @examples
+#' if(.Platform$OS.type!="windows"){
 #' ttd <- get_ttd()
+#' }
 get_ttd <- function(save_dir = cache_dir(),
                     force_new = FALSE,
                     run_map_genes = TRUE){
