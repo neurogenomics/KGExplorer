@@ -55,9 +55,9 @@ Request](https://github.com/neurogenomics/KGExplorer/pulls).
 Within R:
 
 ``` r
-if(!require("remotes")) install.packages("remotes")
+if(!require("BiocManager")) install.packages("BiocManager")
 
-remotes::install_github("neurogenomics/KGExplorer")
+BiocManager::install("neurogenomics/KGExplorer")
 library(KGExplorer)
 ```
 
