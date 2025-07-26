@@ -77,8 +77,6 @@ NULL
 #' as a self-contained HTML file.
 #' @param interactive Make the plot interactive.
 #' @param verbose Print messages.
-#' @param id_col Column containing the unique identifier for each node 
-#' in a graph (e.g. "name").
 #' @param label_var Column containing the label for each node in a graph
 #'  (e.g. "hpo_name").
 #' @param size_var Column to scale node size by.
@@ -240,6 +238,7 @@ NULL
 #' @description
 #' Functions to cache objects in order to speed up processes the second time. 
 #' @inheritParams main_
+#' @inheritParams get_
 #' @inheritParams base::unlink
 #' @family cache_ 
 #' @returns Null. 

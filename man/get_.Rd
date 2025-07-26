@@ -77,9 +77,10 @@ get_gencc(
 get_gene_lengths(genes, keep_chr = c(seq(22), "X", "Y"), ensembl_version = 75)
 
 get_genes_disease(
-  maps = list(c("gene", "disease")),
+  maps = list(c("causal_gene", "disease"), c("correlated_gene", "disease")),
   run_map_mondo = FALSE,
   to = c("OMIM", "Orphanet", "DECIPHER"),
+  method = c("kg", "tsv"),
   ...
 )
 
@@ -95,7 +96,7 @@ get_monarch(
   queries = NULL,
   maps = NULL,
   domain = "https://data.monarchinitiative.org",
-  subdir = "latest/tsv/all_associations/",
+  subdir = "monarch-kg/latest/tsv/all_associations/",
   rbind = FALSE,
   save_dir = cache_dir()
 )
@@ -104,8 +105,8 @@ get_monarch_files(
   maps = NULL,
   queries = NULL,
   domain = "https://data.monarchinitiative.org",
-  subdir = "latest/tsv/all_associations/",
-  omit = c("...", "md5sums", "index.html")
+  subdir = "monarch-kg/latest/tsv/all_associations/",
+  omit = c("...", "..", "md5sums", "index.html")
 )
 
 get_monarch_kg(as_graph = TRUE, save_dir = cache_dir(), force_new = FALSE, ...)
@@ -136,8 +137,8 @@ get_mondo_maps_files(map_types, map_to, save_dir)
 get_ols_options(ol = rols::Ontologies())
 
 get_ontology(
-  name = c("mondo", "hp", "upheno", "uberon", "cl")[1],
-  method = c("github", "rols")[1],
+  name = c("mondo", "hp", "upheno", "uberon", "cl"),
+  method = c("github", "rols"),
   filetype = ".obo",
   import_func = NULL,
   terms = NULL,
@@ -145,7 +146,8 @@ get_ontology(
   lvl = 2,
   add_n_edges = TRUE,
   add_ontology_levels = TRUE,
-  save_dir = cache_dir(),
+  save_dir = cache_dir(subdir = "ontologies"),
+  tag = NULL,
   force_new = FALSE,
   ...
 )
@@ -242,6 +244,12 @@ Passes to \link{get_monarch_files}.}
 
 \item{run_map_mondo}{Run \link{map_mondo} to map MONDO IDs to disease IDs.}
 
+\item{method}{Compute ontology levels using:
+\itemize{
+ \item{"height" (default)} \link[simona]{dag_height}.
+ \item{"depth"} \link[simona]{dag_depth}.
+}}
+
 \item{...}{
   Arguments passed on to \code{\link[=link_monarch]{link_monarch}}, \code{\link[data.table:fread]{data.table::fread}}, \code{\link[data.table:fread]{data.table::fread}}, \code{\link[=get_ontology_github]{get_ontology_github}}
   \describe{
@@ -280,13 +288,13 @@ return any rows where the "type" column contains either "gene" or "variant".}
     \item{\code{data.table}}{ TRUE returns a \code{data.table}. FALSE returns a \code{data.frame}. The default for this argument can be changed with \code{options(datatable.fread.datatable=FALSE)}.}
     \item{\code{nThread}}{The number of threads to use. Experiment to see what works best for your data on your hardware.}
     \item{\code{logical01}}{If TRUE a column containing only 0s and 1s will be read as logical, otherwise as integer.}
+    \item{\code{logicalYN}}{If TRUE a column containing only Ys and Ns will be read as logical, otherwise as character.}
     \item{\code{keepLeadingZeros}}{If TRUE a column containing numeric data with leading zeros will be read as character, otherwise leading zeros will be removed and converted to numeric.}
     \item{\code{yaml}}{ If \code{TRUE}, \code{fread} will attempt to parse (using \code{\link[yaml]{yaml.load}}) the top of the input as YAML, and further to glean parameters relevant to improving the performance of \code{fread} on the data itself. The entire YAML section is returned as parsed into a \code{list} in the \code{yaml_metadata} attribute. See \code{Details}. }
-    \item{\code{autostart}}{ Deprecated and ignored with warning. Please use \code{skip} instead. }
+    \item{\code{autostart}}{ Deprecated. Please use \code{skip} instead. }
     \item{\code{tmpdir}}{ Directory to use as the \code{tmpdir} argument for any \code{tempfile} calls, e.g. when the input is a URL or a shell command. The default is \code{tempdir()} which can be controlled by setting \code{TMPDIR} before starting the R session; see \code{\link[base:tempfile]{base::tempdir}}. }
     \item{\code{tz}}{ Relevant to datetime values which have no Z or UTC-offset at the end, i.e. \emph{unmarked} datetime, as written by \code{\link[utils:write.table]{utils::write.csv}}. The default \code{tz="UTC"} reads unmarked datetime as UTC POSIXct efficiently. \code{tz=""} reads unmarked datetime as type character (slowly) so that \code{as.POSIXct} can interpret (slowly) the character datetimes in local timezone; e.g. by using \code{"POSIXct"} in \code{colClasses=}. Note that \code{fwrite()} by default writes datetime in UTC including the final Z and therefore \code{fwrite}'s output will be read by \code{fread} consistently and quickly without needing to use \code{tz=} or \code{colClasses=}. If the \code{TZ} environment variable is set to \code{"UTC"} (or \code{""} on non-Windows where unset vs `""` is significant) then the R session's timezone is already UTC and \code{tz=""} will result in unmarked datetimes being read as UTC POSIXct. For more information, please see the news items from v1.13.0 and v1.14.0. }
     \item{\code{repo}}{Repository name in format "owner/repo". Defaults to \code{guess_repo()}.}
-    \item{\code{tag}}{tag for the GitHub release to which this data should be attached.}
   }}
 
 \item{g}{\link[tidygraph]{tbl_graph} object.}
@@ -338,12 +346,6 @@ Can be a character vector of one or more column names.}
 
 \item{ol}{An \link[rols]{Ontologies} object.}
 
-\item{method}{Compute ontology levels using:
-\itemize{
- \item{"height" (default)} \link[simona]{dag_height}.
- \item{"depth"} \link[simona]{dag_depth}.
-}}
-
 \item{filetype}{File type to search for.}
 
 \item{import_func}{Function to import the ontology with. 
@@ -359,6 +361,8 @@ Will get the closest ancestor to this level if none have this exact level.}
 \item{add_n_edges}{Add the number of edges (connections) for each term.}
 
 \item{add_ontology_levels}{Add the ontology level for each term.}
+
+\item{tag}{tag for the GitHub release to which this data should be attached.}
 
 \item{include_self}{For \code{dag_offspring()} and \code{dag_ancestors()}, this controls whether to also include the query term itself.}
 
@@ -624,13 +628,15 @@ am <- get_alphamissense()
 ont <- get_ontology("hp", terms=10)
 def <- get_definitions(ont)
 d <- get_gencc()
-genes <- get_genes_disease()
-dat <- get_monarch(maps=list(c("gene","disease")))
+genes_diseases <- get_genes_disease(method="tsv")
+dat <- get_monarch(maps=list(c("causal_gene","disease")))
 files <- get_monarch_files() 
 \dontrun{
 g <- get_monarch_kg(save_dir=tempdir(), nrows=100)
 }
+\dontrun{
 models <- get_monarch_models()
+}
 map <- get_mondo_maps("default") 
 mondo <- get_ontology(name="mondo")
 \dontrun{
@@ -649,7 +655,9 @@ pli <- get_pli()
 \dontrun{
 get_prevalence()
 }
+if(.Platform$OS.type!="windows"){
 ttd <- get_ttd()
+}
 upheno <- get_upheno()
 obj <- get_ontology("hp")
 get_version(obj=obj)

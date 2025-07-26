@@ -63,7 +63,7 @@ map_ontology_terms(
 )
 
 map_upheno(
-  pheno_map_method = c("upheno", "monarch"),
+  pheno_map_method = c("upheno"),
   gene_map_method = c("monarch"),
   filters = list(db1 = "HP", gene_taxon_label1 = "Homo sapiens"),
   terms = NULL,
@@ -260,9 +260,8 @@ terms <- c("Focal motor seizure",
             "HP:0000002","HP:0000003")
 term_names <- map_ontology_terms(ont=ont, terms=terms)
 term_ids <- map_ontology_terms(ont=ont, terms=terms, to="id")
-\dontrun{
+library(ggplot2) # required step due to bug in ggdist
 res <- map_upheno()
-}
 if(interactive()){
 gr <- GenomicRanges::GRanges("1:100-10000")
 hits <- map_variants(gr)

@@ -6,12 +6,13 @@
 \title{Link functions}
 \usage{
 link_monarch(
-  maps = list(c("variant", "disease"), c("variant", "phenotype"), c("variant", "gene")),
+  maps = list(c("variant", "disease"), c("variant", "phenotypic_feature"), c("variant",
+    "gene")),
   queries = NULL,
   node_filters = list(phenotype = NULL, subject_db = NULL, gene = NULL),
   as_graph = TRUE,
   domain = "https://data.monarchinitiative.org",
-  subdir = "latest/tsv/all_associations/",
+  subdir = "monarch-kg/latest/tsv/all_associations/",
   ...
 )
 }
@@ -58,6 +59,7 @@ Construct a knowledge graph by iteratively linking together pairs of concepts
 
 }}
 \examples{
-dat <- link_monarch(maps = list(c("gene","disease")))
+dat <- link_monarch(maps = list(c("causal_gene","disease"),
+                                c("correlated_gene","disease")))
 }
 \concept{link_}

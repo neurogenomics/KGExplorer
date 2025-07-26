@@ -25,20 +25,27 @@ map_upheno_data_i <- function(pheno_map_method,
       names(pheno_map) <-gsub("^subject","id1",names(pheno_map))
       names(pheno_map) <-gsub("^object","id2",names(pheno_map))
       pheno_map[,db1:=gsub("*:.*","",basename(id1))]
-    } else if(pheno_map_method=="monarch"){
-
-      hpo <- get_ontology(name = "hpo")
-      out <- monarchr::monarch_search(query = NULL,
-                                      category = "biolink:PhenotypicFeature",
-                                      limit = 500)
-      pheno_map <- get_monarch(queries = "phenotype_to_phenotype") |>
-        data.table::setnames(c("label_x","label_y"),c("label1","label2"))
-      pheno_map[,id1:=gsub("_",":",basename(p1))
-      ][,id2:=gsub("_",":",basename(p2))]
-      pheno_map[,db1:=gsub("*_.*","",basename(p1))
-      ][,db2:=gsub("*_.*","",basename(p2))]
-      pheno_map[,equivalence_score:=NA][,subclass_score:=NA]
-    }
+      
+      
+    } 
+    # else if(pheno_map_method=="monarch"){
+    #   #### NOTE: DEPRECATED FOR THE TIME BEING ####
+    # 
+    #   hpo <- get_ontology(name = "hpo")
+    #   out <- monarchr::monarch_search(query = NULL,
+    #                                   category = "biolink:PhenotypicFeature",
+    #                                   limit = 10)
+    #   
+    #   
+    #   pheno_map <- get_monarch(queries = "phenotype_to_phenotype") |>
+    #     data.table::setnames(c("label_x","label_y"),c("label1","label2"))
+    #   
+    #   pheno_map[,id1:=gsub("_",":",basename(p1))
+    #   ][,id2:=gsub("_",":",basename(p2))]
+    #   pheno_map[,db1:=gsub("*_.*","",basename(p1))
+    #   ][,db2:=gsub("*_.*","",basename(p2))]
+    #   pheno_map[,equivalence_score:=NA][,subclass_score:=NA]
+    # }
     #### Filter data ####
     if(!is.null(terms)){
       pheno_map <- pheno_map[id1 %in% terms,]
@@ -50,7 +57,10 @@ map_upheno_data_i <- function(pheno_map_method,
 
   ## Gene-phenotype associations across 8 species
   {
-    genes <- get_monarch(maps = list(c("phenotype","gene")),
+    genes <- get_monarch(maps = list(c("phenotypic_feature","gene"),
+                                     c("disease_or_phenotypic_feature","gene",
+                                       "disease"="causal_gene",
+                                       "disease"="correlated_gene")),
                          rbind=TRUE)
     data.table::setkeyv(genes,"object")
     messager("Unique species with genes:",
@@ -79,6 +89,7 @@ map_upheno_data_i <- function(pheno_map_method,
   #### Map non-human phenotypes onto human phenotypes ####
   #### Merge nonhuman ontology genes with human HPO genes ####
   {
+    messager("Merging nonhuman ontology genes with human HPO genes.")
     pheno_map_genes <- data.table::merge.data.table(
       pheno_map,
       genes_homol,

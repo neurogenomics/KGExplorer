@@ -6,7 +6,7 @@ plot_upheno_rainplot <- function(plot_dat){
   subject_taxon_label2 <- n_phenotypes <- n_genes_intersect <- n_genes_db1 <-
     object_db <- NULL;
 
-
+  messager("Creating UPHENO rainplot")
   ### Plot proportion of intersecting orthologs per ontology ####
   ggplot2::ggplot(plot_dat,
          ggplot2::aes(x=paste0(gene_taxon_label2,

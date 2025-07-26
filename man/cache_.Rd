@@ -11,7 +11,7 @@
 \usage{
 cache_clear(save_dir = cache_dir(), recursive = TRUE, ...)
 
-cache_dir(package = "KGExplorer")
+cache_dir(package = "KGExplorer", subdir = NULL)
 
 cache_files(save_dir = cache_dir(), recursive = TRUE, ...)
 
@@ -33,7 +33,17 @@ cache_save(obj, save_path)
     tilde (see \code{\link[base]{path.expand}}) be expanded?}
   }}
 
-\item{package}{a character string giving the name of an \R package}
+\item{package}{
+    a character vector giving the package(s) to look
+    in for data sets, or \code{NULL}.
+
+    By default, all packages in the search path are used, then
+    the \file{data} subdirectory (if present) of the current working
+    directory.
+  }
+
+\item{subdir}{Subdirectory path to search for Monarch files within
+\code{domain}.}
 
 \item{obj}{R object.}
 

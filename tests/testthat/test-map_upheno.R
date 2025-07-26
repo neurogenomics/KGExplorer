@@ -1,7 +1,7 @@
 skip_if_offline()
 test_that("map_upheno works", {
-
-  testthat::skip() # Skip until issues with monarchr API resolved
+  
+  library(ggplot2) # required step due to bug in ggdist
 
   run_tests <- function(res){
     testthat::expect_true(methods::is(res$data,"data.table"))

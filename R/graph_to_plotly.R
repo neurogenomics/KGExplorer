@@ -2,6 +2,7 @@
 #'
 #' Convert an igraph to data for a 3D plotly plot.
 #' @param dim Number of dimensions to create layout in.
+#' @param id_col Column containing unique ID per term.
 #' @inheritParams plot_graph_3d
 #' @returns Named list of data.frames.
 #'

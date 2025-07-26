@@ -11,7 +11,9 @@
 #' @inheritParams map_
 #' @export
 #' @examples
+#' \dontrun{
 #' models <- get_monarch_models()
+#' }
 get_monarch_models <- function(maps = list(
                                 m2d=c("model","disease")
                                 # m2g=c("model","gene")
@@ -28,6 +30,9 @@ get_monarch_models <- function(maps = list(
                                map_orthologs=TRUE,
                                as_graph=FALSE,
                                ...){
+  
+  .Deprecated("get_monarch_models",
+              "get_monarch_models() is deprecated.")
   dat <- link_monarch(maps = maps,
                       filters = filters,
                       as_graph = as_graph,

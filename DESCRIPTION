@@ -1,7 +1,7 @@
 Package: KGExplorer
 Type: Package
 Title: Biomedical Knowledge Network Construction and Analysis
-Version: 0.99.06
+Version: 0.99.08
 Authors@R:
     c(
     person(given = "Brian",

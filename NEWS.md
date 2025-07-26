@@ -1,3 +1,18 @@
+# KGExplorer 0.99.08
+
+## Bug fixes
+* `map_upheno_data`: 
+  - Updated Monarch FTP endpoint 
+  `subdir="latest/tsv/all_associations/"` --> `subdir="monarch-kg/latest/tsv/all_associations/"`
+  - Remove "monarch" option for now (broken due to files being deleted on Monarch FTP server)
+* `get_monarch`: Fix example
+* `map_upheno`: Fix plotting error
+
+# KGExplorer 0.99.07
+
+## New features
+* `get_ontology`: Saves files with release version control.
+
 # KGExplorer 0.99.06
 
 ## Bug fixes

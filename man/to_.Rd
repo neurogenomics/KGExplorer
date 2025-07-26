@@ -44,9 +44,6 @@ to_graph(g, ...)
 
 \item{g}{\link[tidygraph]{tbl_graph} object.}
 
-\item{id_col}{Column containing the unique identifier for each node 
-in a graph (e.g. "name").}
-
 \item{...}{
   Arguments passed on to \code{\link[ggnetwork:fortify]{ggnetwork::fortify}}
   \describe{

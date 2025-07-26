@@ -10,7 +10,11 @@ get_ontology_github(
   filetype = ".obo",
   file = paste0(name, filetype),
   tag = "latest",
-  save_dir = cache_dir(),
+  add_metadata = TRUE,
+  add_n_edges = TRUE,
+  add_ontology_levels = TRUE,
+  lvl = 2,
+  save_dir = cache_dir(subdir = "ontologies"),
   force_new = FALSE,
   ...
 )
@@ -50,6 +54,15 @@ Distributed by the
 }}
 
 \item{tag}{tag for the GitHub release to which this data should be attached.}
+
+\item{add_metadata}{Add metadata to the resulting ontology object.}
+
+\item{add_n_edges}{Add the number of edges (connections) for each term.}
+
+\item{add_ontology_levels}{Add the ontology level for each term.}
+
+\item{lvl}{Depth of the ancestor terms to add. 
+Will get the closest ancestor to this level if none have this exact level.}
 
 \item{save_dir}{Directory to save a file to.}
 

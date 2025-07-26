@@ -5,7 +5,7 @@
 \title{Map uPheno data}
 \usage{
 map_upheno_data(
-  pheno_map_method = c("upheno", "monarch"),
+  pheno_map_method = c("upheno"),
   gene_map_method = c("monarch"),
   keep_nogenes = FALSE,
   fill_scores = NULL,

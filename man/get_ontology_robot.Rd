@@ -29,8 +29,8 @@ Distributed by the
  Monarch Initiative server}.}
 }}
     \item{\code{save_dir}}{Directory to save a file to.}
-    \item{\code{repo}}{Repository name in format "owner/repo". Defaults to \code{guess_repo()}.}
     \item{\code{tag}}{tag for the GitHub release to which this data should be attached.}
+    \item{\code{repo}}{Repository name in format "owner/repo". Defaults to \code{guess_repo()}.}
     \item{\code{overwrite}}{Should any local files of the same name be overwritten?
 default \code{TRUE}.}
   }}

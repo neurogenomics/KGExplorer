@@ -5,10 +5,11 @@
 #'  across  multiple Monarch datasets.
 #' @export
 #' @examples
-#' dat <- link_monarch(maps = list(c("gene","disease")))
+#' dat <- link_monarch(maps = list(c("causal_gene","disease"),
+#'                                 c("correlated_gene","disease")))
 link_monarch <- function(maps = list(
                                     c("variant","disease"),
-                                    c("variant","phenotype"),
+                                    c("variant","phenotypic_feature"),
                                     c("variant","gene")
                          ),
                          queries=NULL,
@@ -20,7 +21,7 @@ link_monarch <- function(maps = list(
                            ),
                          as_graph=TRUE,
                          domain="https://data.monarchinitiative.org",
-                         subdir="latest/tsv/all_associations/",
+                         subdir="monarch-kg/latest/tsv/all_associations/",
                          ...
                          ){
   

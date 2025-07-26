@@ -24,8 +24,7 @@ graph_to_plotly(
 
 \item{dim}{Number of dimensions to create layout in.}
 
-\item{id_col}{Column containing the unique identifier for each node 
-in a graph (e.g. "name").}
+\item{id_col}{Column containing unique ID per term.}
 
 \item{label_var}{Column containing the label for each node in a graph
 (e.g. "hpo_name").}

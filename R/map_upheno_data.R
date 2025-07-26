@@ -25,7 +25,7 @@
 #' \dontrun{
 #' pheno_map_genes_match <- map_upheno_data()
 #' }
-map_upheno_data <- function(pheno_map_method=c("upheno","monarch"),
+map_upheno_data <- function(pheno_map_method=c("upheno"),#"monarch"
                             gene_map_method=c("monarch"),
                             keep_nogenes=FALSE,
                             fill_scores=NULL,
@@ -54,7 +54,8 @@ map_upheno_data <- function(pheno_map_method=c("upheno","monarch"),
                           fill_scores=fill_scores,
                           terms=terms,
                           agg=agg)
-      }) |> data.table::rbindlist(fill=TRUE, idcol = "pheno_map_method")
+      }) |> data.table::rbindlist(fill=TRUE, 
+                                  idcol = "pheno_map_method")
     ## Save
     messager("Caching processed file -->",save_path)
     attr(pheno_map_genes_match,"version") <- format(Sys.Date(), "%Y-%m-%d")

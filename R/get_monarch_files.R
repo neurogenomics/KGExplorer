@@ -13,8 +13,9 @@
 get_monarch_files <- function(maps=NULL,
                               queries=NULL,
                               domain="https://data.monarchinitiative.org",
-                              subdir="latest/tsv/all_associations/",
-                              omit=c("...","md5sums","index.html")){
+                              subdir="monarch-kg/latest/tsv/all_associations/",
+                              omit=c("...","..","md5sums","index.html")
+                              ){
   name <- subject <- object <- NULL;
 
   html <- rvest::read_html(paste(domain,subdir,sep="/"))
@@ -29,8 +30,9 @@ get_monarch_files <- function(maps=NULL,
   #### Steps specific to associations files ####
   if(grepl("_associations",subdir)){
     #### Add from/to cols ####
-    files[,c("subject","object"):=data.table::tstrsplit(gsub("\\..*","",name),
-                                                        "_")]
+    files[,c("subject","object"):=data.table::tstrsplit(
+      gsub("_association","",gsub("\\..*","",name)),
+      "_to_" )]
     #### Subset using maps ####
     if(!is.null(maps)){
       messager("Filtering with `maps`.")

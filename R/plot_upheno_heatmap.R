@@ -19,6 +19,8 @@ plot_upheno_heatmap <- function(plot_dat,
   set.seed(2023)
   value.var <- match.arg(value.var)
   value.var <- value.var[1]
+  
+  messager("Creating UPHENO heatmap.")
   # hpo_ids <- MSTExplorer::example_targets$top_targets$hpo_id
 
   ### Subset phenotypes

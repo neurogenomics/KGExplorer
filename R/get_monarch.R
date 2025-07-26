@@ -15,11 +15,11 @@
 #'
 #' @export
 #' @examples
-#' dat <- get_monarch(maps=list(c("gene","disease")))
+#' dat <- get_monarch(maps=list(c("causal_gene","disease")))
 get_monarch <- function(queries=NULL,
                         maps=NULL,
                         domain="https://data.monarchinitiative.org",
-                        subdir="latest/tsv/all_associations/",
+                        subdir="monarch-kg/latest/tsv/all_associations/",
                         rbind=FALSE,
                         save_dir=cache_dir()
                         ){

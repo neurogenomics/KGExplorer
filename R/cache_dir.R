@@ -8,12 +8,16 @@
 #' @export
 #' @examples
 #' save_dir <- cache_dir
-cache_dir <- function(package="KGExplorer"){
+cache_dir <- function(package="KGExplorer",
+                      subdir=NULL){
   
   dir <- tools::R_user_dir(
     package = package,
     which = "cache"
   )
+  if(!is.null(subdir)){
+    dir <- file.path(dir,subdir)
+  }
   dir.create(dir,showWarnings = FALSE, recursive = TRUE)
   return(dir)
 }

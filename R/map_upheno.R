@@ -36,10 +36,9 @@
 #' @export
 #' @import data.table 
 #' @examples
-#' \dontrun{
+#' library(ggplot2) # required step due to bug in ggdist
 #' res <- map_upheno()
-#' }
-map_upheno <- function(pheno_map_method=c("upheno","monarch"),
+map_upheno <- function(pheno_map_method=c("upheno"),
                        gene_map_method=c("monarch"),
                        filters=list(db1="HP",
                                     gene_taxon_label1="Homo sapiens"),
@@ -55,8 +54,13 @@ map_upheno <- function(pheno_map_method=c("upheno","monarch"),
                                            force_new = force_new,
                                            terms=terms)
   #### Plots ####
-  plots <- plot_upheno(pheno_map_genes_match,
-                       filters=filters)
+  if (show_plot){
+    plots <- plot_upheno(pheno_map_genes_match,
+                         filters=filters)
+  } else{
+    plots <- NULL
+  }
+  
   #### Return ####
   return(
     list(data=pheno_map_genes_match,

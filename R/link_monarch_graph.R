@@ -26,12 +26,13 @@ link_monarch_graph <- function(files,
       return(d)
     }
   })
+  
   #### Merge graphs/tables ####
   if(isTRUE(as_graph)){
     g <- Reduce(tidygraph::graph_join, map_dt, ...) 
     return(g)
   } else {
-    d <- data.table::rbindlist(map_dt)
+    d <- data.table::rbindlist(map_dt, fill=TRUE)
     return(d)
   }
 }

@@ -18,6 +18,11 @@
 get_version <- function(obj,
                         return_version = FALSE,
                         verbose = TRUE){
+  
+  is_date <- function(x){
+    grepl("[0-9]+-[0-9]+-[0-9]",x)
+  }
+  
   ## Extract
   if(methods::is(obj,"ontology_index")){
     x <- grep("data-version:",attr(obj,"version"),value=TRUE)
@@ -25,7 +30,10 @@ get_version <- function(obj,
                 trimws(gsub("data-version:|hp/releases/|/hp-base.owl","",x))
                 )
   } else if(methods::is(obj,"ontology_DAG")){
-    v <- basename(dirname(strsplit(obj@source,",")[[1]][2]))
+    v <- basename(strsplit(obj@source,",")[[1]][2])
+    if (!is_date(v)){
+      v <- basename(dirname(strsplit(obj@source,",")[[1]][2]))
+    }
   } else {
     v <- attr(obj,"version")
   }
