@@ -30,19 +30,23 @@ get_mondo_maps <- function(map_types=c("default",
                            top_n=NULL,
                            top_by=c("subject","object"),
                            save_dir=cache_dir()
-                           ){
-  requireNamespace("downloadR")
+                           ){ 
   save_path <- subject_label <- object_label <- map_type <- label <- file <-
     predicate <- NULL;
   
   if(length(map_types)==1 &&
      map_types=="default"){ 
-    save_path <- downloadR::downloader(
-      input_url =  paste0(
-        "https://github.com/monarch-initiative/mondo/raw/master/",
-        "src/ontology/mappings/mondo.sssom.tsv"),
-      output_dir = save_dir,
-      download_method = "download.file")
+    
+    save_path <- file.path(save_dir,"mondo.sssom.tsv")
+    if(!file.exists(save_path)){
+      dir.create(save_dir, showWarnings = FALSE, recursive = TRUE)
+      utils::download.file(
+        url =  paste0(
+          "https://github.com/monarch-initiative/mondo/raw/master/",
+          "src/ontology/mappings/mondo.sssom.tsv"),
+        destfile = save_path)
+    }
+    
     map <- data.table::fread(save_path,
                              skip = "subject",
                              tmpdir = save_dir)
@@ -63,10 +67,13 @@ get_mondo_maps <- function(map_types=c("default",
     map <- lapply(stats::setNames(files$link_raw,
                                   basename(files$link_raw)),
                   function(x){
-      save_path <- downloadR::downloader(input_url = x,
-                                    output_dir = save_dir,
-                                    download_method = "download.file", 
-                                    verbose = FALSE)
+                    
+      save_path <- file.path(save_dir, basename(x))
+      if(!file.exists(save_path)){ 
+        dir.create(save_dir, showWarnings = FALSE, recursive = TRUE)
+        utils::download.file(url = x,
+                             destfile = save_path)
+      }
       data.table::fread(save_path,
                         skip="subject_id",
                         tmpdir = save_dir)

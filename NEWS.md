@@ -1,3 +1,8 @@
+# KGExplorer 0.99.09
+
+## New features
+* Remove `downloadR` dependency as it was causing unnecessary complications.
+
 # KGExplorer 0.99.08
 
 ## Bug fixes

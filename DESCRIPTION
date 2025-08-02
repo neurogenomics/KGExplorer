@@ -1,7 +1,7 @@
 Package: KGExplorer
 Type: Package
 Title: Biomedical Knowledge Network Construction and Analysis
-Version: 0.99.08
+Version: 0.99.09
 Authors@R:
     c(
     person(given = "Brian",
@@ -44,8 +44,7 @@ Imports:
   BiocParallel,
   GenomicRanges,
   orthogene,
-  echogithub,
-  downloadR,
+  echogithub, 
   EnsDb.Hsapiens.v75
 Suggests:
   rworkflows,
@@ -86,8 +85,7 @@ Remotes:
   github::monarch-initiative/monarchr,
   github::phenoscape/rphenoscape,
   github::vjcitn/biocBiocypher,
-  github::RajLabMSSM/echogithub,
-  github::RajLabMSSM/downloadR,
+  github::RajLabMSSM/echogithub, 
   github::kwstat/pals
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr
