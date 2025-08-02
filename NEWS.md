@@ -1,5 +1,8 @@
 # KGExplorer 0.99.09
 
+## Bug fixes
+* *test-map_ontology_terms.R*: Fixed expected number of NA CL names.
+
 ## New features
 * Remove `downloadR` dependency as it was causing unnecessary complications.
 
