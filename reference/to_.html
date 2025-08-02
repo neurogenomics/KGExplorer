@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">KGExplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.09</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>To functions</h1>
-    <small class="dont-index">Source: <a href="https://github.com/neurogenomics/KGExplorer/blob/docs-update/R/0docs.R" class="external-link"><code>R/0docs.R</code></a>, <a href="https://github.com/neurogenomics/KGExplorer/blob/docs-update/R/dt_to_matrix.R" class="external-link"><code>R/dt_to_matrix.R</code></a>, <a href="https://github.com/neurogenomics/KGExplorer/blob/docs-update/R/graph_to_dt.R" class="external-link"><code>R/graph_to_dt.R</code></a>, and 4 more</small>
+    <small class="dont-index">Source: <a href="https://github.com/neurogenomics/KGExplorer/blob/master/R/0docs.R" class="external-link"><code>R/0docs.R</code></a>, <a href="https://github.com/neurogenomics/KGExplorer/blob/master/R/dt_to_matrix.R" class="external-link"><code>R/dt_to_matrix.R</code></a>, <a href="https://github.com/neurogenomics/KGExplorer/blob/master/R/graph_to_dt.R" class="external-link"><code>R/graph_to_dt.R</code></a>, and 4 more</small>
     <div class="hidden name"><code>to_.Rd</code></div>
     </div>
 
@@ -105,11 +105,6 @@
 
 <dt id="arg-g">g<a class="anchor" aria-label="anchor" href="#arg-g"></a></dt>
 <dd><p><a href="https://tidygraph.data-imaginist.com/reference/tbl_graph.html" class="external-link">tbl_graph</a> object.</p></dd>
-
-
-<dt id="arg-id-col">id_col<a class="anchor" aria-label="anchor" href="#arg-id-col"></a></dt>
-<dd><p>Column containing the unique identifier for each node
-in a graph (e.g. "name").</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -175,7 +170,8 @@ a number of other useful formats.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">mtcars</span>, keep.rownames <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">dt_to_matrix</span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_.html">get_ontology</a></span><span class="op">(</span><span class="st">"hp"</span>, terms<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading cached ontology: /github/home/.cache/R/KGExplorer/hp.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Randomly sampling 10 term(s).</span>
 <span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu">ontology_to</span><span class="op">(</span><span class="va">ont</span>, to<span class="op">=</span><span class="st">"tbl_graph"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
@@ -188,103 +184,104 @@ a number of other useful formats.</p></li>
 <span class="r-in"><span><span class="va">ggn</span> <span class="op">&lt;-</span> <span class="fu">graph_to_ggnetwork</span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converting graph to ggnetwork.</span>
 <span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_.html">get_ontology</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading cached ontology: /github/home/.cache/R/KGExplorer/mondo.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/mondo_v2025-07-01.rds</span>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ontology_to</span><span class="op">(</span>ont<span class="op">=</span><span class="va">ont</span>, to<span class="op">=</span><span class="st">"dendrogram"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 1000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 1000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 2000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 2000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 3000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 3000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 4000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 4000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 5000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 5000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 6000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 6000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 7000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 7000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 8000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 8000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 9000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 9000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 10000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 10000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 11000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 11000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 12000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 12000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 13000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 13000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 14000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 14000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 15000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 15000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 16000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 16000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 17000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 17000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 18000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 18000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 19000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 19000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 20000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 20000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 21000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 21000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 22000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 22000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 23000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 23000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 24000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 24000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 25000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 25000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 26000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 26000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 27000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 27000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 28000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 28000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 29000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 29000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 30000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 30000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 31000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 31000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 32000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 32000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 33000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 33000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 34000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 34000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 35000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 35000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 36000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 36000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 37000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 37000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 38000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 38000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 39000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 39000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 40000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 40000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 41000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 41000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 42000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 42000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 43000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 43000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 44000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 44000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 45000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 45000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 46000 / 46695 nodes ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 46000 / 46848 nodes ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 46695 / 46695 nodes ... Done.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> going through 46848 / 46848 nodes ... Done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converted ontology to: dendrogram </span>
 <span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/graph.full.html" class="external-link">graph.full</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`graph.full()` was deprecated in igraph 2.1.0.</span>
@@ -304,7 +301,7 @@ a number of other useful formats.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>

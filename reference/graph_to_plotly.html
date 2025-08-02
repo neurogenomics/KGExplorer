@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">KGExplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.09</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>igraph to plotly data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/neurogenomics/KGExplorer/blob/docs-update/R/graph_to_plotly.R" class="external-link"><code>R/graph_to_plotly.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/neurogenomics/KGExplorer/blob/master/R/graph_to_plotly.R" class="external-link"><code>R/graph_to_plotly.R</code></a></small>
     <div class="hidden name"><code>graph_to_plotly.Rd</code></div>
     </div>
 
@@ -99,8 +99,7 @@
 
 
 <dt id="arg-id-col">id_col<a class="anchor" aria-label="anchor" href="#arg-id-col"></a></dt>
-<dd><p>Column containing the unique identifier for each node
-in a graph (e.g. "name").</p></dd>
+<dd><p>Column containing unique ID per term.</p></dd>
 
 
 <dt id="arg-label-var">label_var<a class="anchor" aria-label="anchor" href="#arg-label-var"></a></dt>
@@ -120,7 +119,8 @@ in a graph (e.g. "name").</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_.html">get_ontology</a></span><span class="op">(</span><span class="st">"hp"</span>, terms<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading cached ontology: /github/home/.cache/R/KGExplorer/hp.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Randomly sampling 10 term(s).</span>
 <span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="to_.html">ontology_to</a></span><span class="op">(</span><span class="va">ont</span>, to<span class="op">=</span><span class="st">"tbl_graph"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
@@ -128,20 +128,8 @@ in a graph (e.g. "name").</p></dd>
 <span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">graph_to_plotly</span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converting igraph to plotly data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to names.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ Iterating 4 done (1.9/s) | 2.1s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠹ Iterating 7 done (2.5/s) | 2.8s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠹ Iterating 14 done (3.1/s) | 4.6s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing cached file: /github/home/.cache/R/KGExplorer/hp.obo</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding term metadata.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> IC_method: IC_offspring</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding ancestor metadata.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 19,077 IDs.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 79 ancestors found at level 2</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to names.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Converted ontology to: adjacency </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 19,077 IDs.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Saving ontology --&gt; /github/home/.cache/R/KGExplorer/hpo.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
 </code></pre></div>
     </div>
   </div>
@@ -156,7 +144,7 @@ in a graph (e.g. "name").</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>

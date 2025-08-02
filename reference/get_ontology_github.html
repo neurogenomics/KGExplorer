@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">KGExplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.09</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get ontology from GitHub and import it via <a href="https://rdrr.io/pkg/simona/man/import_obo.html" class="external-link">import_ontology</a>.</h1>
-    <small class="dont-index">Source: <a href="https://github.com/neurogenomics/KGExplorer/blob/docs-update/R/get_ontology_github.R" class="external-link"><code>R/get_ontology_github.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/neurogenomics/KGExplorer/blob/master/R/get_ontology_github.R" class="external-link"><code>R/get_ontology_github.R</code></a></small>
     <div class="hidden name"><code>get_ontology_github.Rd</code></div>
     </div>
 
@@ -72,7 +72,11 @@
 <span>  filetype <span class="op">=</span> <span class="st">".obo"</span>,</span>
 <span>  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">filetype</span><span class="op">)</span>,</span>
 <span>  tag <span class="op">=</span> <span class="st">"latest"</span>,</span>
-<span>  save_dir <span class="op">=</span> <span class="fu"><a href="cache_.html">cache_dir</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  add_metadata <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  add_n_edges <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  add_ontology_levels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  lvl <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  save_dir <span class="op">=</span> <span class="fu"><a href="cache_.html">cache_dir</a></span><span class="op">(</span>subdir <span class="op">=</span> <span class="st">"ontologies"</span><span class="op">)</span>,</span>
 <span>  force_new <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -124,6 +128,23 @@ Distributed by the
 <dd><p>tag for the GitHub release to which this data should be attached.</p></dd>
 
 
+<dt id="arg-add-metadata">add_metadata<a class="anchor" aria-label="anchor" href="#arg-add-metadata"></a></dt>
+<dd><p>Add metadata to the resulting ontology object.</p></dd>
+
+
+<dt id="arg-add-n-edges">add_n_edges<a class="anchor" aria-label="anchor" href="#arg-add-n-edges"></a></dt>
+<dd><p>Add the number of edges (connections) for each term.</p></dd>
+
+
+<dt id="arg-add-ontology-levels">add_ontology_levels<a class="anchor" aria-label="anchor" href="#arg-add-ontology-levels"></a></dt>
+<dd><p>Add the ontology level for each term.</p></dd>
+
+
+<dt id="arg-lvl">lvl<a class="anchor" aria-label="anchor" href="#arg-lvl"></a></dt>
+<dd><p>Depth of the ancestor terms to add.
+Will get the closest ancestor to this level if none have this exact level.</p></dd>
+
+
 <dt id="arg-save-dir">save_dir<a class="anchor" aria-label="anchor" href="#arg-save-dir"></a></dt>
 <dd><p>Directory to save a file to.</p></dd>
 
@@ -165,7 +186,7 @@ set as a global option <code>simona_opt$robot_jar = ...</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>
