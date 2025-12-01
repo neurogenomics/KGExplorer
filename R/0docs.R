@@ -113,11 +113,12 @@ NULL
 #' @param run_map_genes Map genes to standardised HGNC symbols using 
 #' \link[orthogene]{map_genes}.
 #' @param from The designated from column in from-to mapping or relations.
+#' @param include_self For dag_offspring() and dag_ancestors(), this controls 
+#' whether to also include the query term itself. 
 #' @inheritParams main_
 #' @inheritParams add_
 #' @inheritParams to_
-#' @inheritParams map_
-#' @inheritParams simona::dag_ancestors
+#' @inheritParams map_ 
 #' @inheritParams data.table::merge.data.table
 #' @import rols
 #' @description

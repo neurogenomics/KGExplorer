@@ -1,7 +1,7 @@
 #' @describeIn get_ get_
 #' Get a complete up=to-date list of ontologies available via the
 #' \href{https://www.ebi.ac.uk/ols4}{EBML-EBI Ontology Lookup Service} API.
-#' @param ol An \link[rols]{Ontologies} object.
+#' @param ol An \code{rols::olsOntologies} object.
 #' @importFrom utils packageVersion
 #' @export
 get_ols_options <- function(ol = NULL){

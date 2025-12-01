@@ -76,6 +76,9 @@ return any rows where the "type" column contains either "gene" or "variant".}
 (including themselves).
  Set to \code{NULL} (default) to skip this filtering step.}
 
+\item{include_self}{For dag_offspring() and dag_ancestors(), this controls 
+whether to also include the query term itself.}
+
 \item{use_simona}{Use \link[simona]{dag_filter} to filter terms.}
 
 \item{...}{

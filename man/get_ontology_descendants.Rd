@@ -11,17 +11,10 @@ get_ontology_descendants(ont, terms, include_self = TRUE, ...)
 
 \item{terms}{A vector of ontology term IDs.}
 
-\item{include_self}{For \code{dag_offspring()} and \code{dag_ancestors()}, this controls whether to also include the query term itself.}
+\item{include_self}{For dag_offspring() and dag_ancestors(), this controls 
+whether to also include the query term itself.}
 
-\item{...}{
-  Arguments passed on to \code{\link[simona:dag_terms]{simona::dag_offspring}}
-  \describe{
-    \item{\code{dag}}{An \code{ontology_DAG} object.}
-    \item{\code{term}}{The value can be a vector of multiple term names. If it is a vector, it returns
-union of the upstream/downstream terms of the selected set of terms. For \code{dag_siblings()},
-the value can only be a single term.}
-    \item{\code{in_labels}}{Whether the terms are represented in their names or as integer indices?}
-  }}
+\item{...}{Additional arguments passed to  \code{simona::dag_offspring}.}
 }
 \value{
 A named list of descendants, where the names are the input terms.

@@ -1,10 +1,9 @@
 #' Get ontology descendants
 #' 
 #' Get the descendants of a set of ontology terms.
-#' @inheritParams get_
-#' @inheritParams simona::dag_offspring
+#' @inheritParams get_ 
 #' @returns A named list of descendants, where the names are the input terms.
-#' @inheritDotParams simona::dag_offspring
+#' @param ... Additional arguments passed to  \code{simona::dag_offspring}.
 #' @export
 #' @examples
 #' ont <- get_ontology("hp", terms=10)

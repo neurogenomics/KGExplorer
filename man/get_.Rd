@@ -344,7 +344,7 @@ Set to \code{NULL} to skip this step.}
 \item{top_by}{Grouping columns when selecting \code{top_n} rows per grouping.
 Can be a character vector of one or more column names.}
 
-\item{ol}{An \link[rols]{Ontologies} object.}
+\item{ol}{An \code{rols::olsOntologies} object.}
 
 \item{filetype}{File type to search for.}
 
@@ -364,7 +364,8 @@ Will get the closest ancestor to this level if none have this exact level.}
 
 \item{tag}{tag for the GitHub release to which this data should be attached.}
 
-\item{include_self}{For \code{dag_offspring()} and \code{dag_ancestors()}, this controls whether to also include the query term itself.}
+\item{include_self}{For dag_offspring() and dag_ancestors(), this controls 
+whether to also include the query term itself.}
 
 \item{include_alternative_terms}{Include alternative terms in the dictionary.}
 
