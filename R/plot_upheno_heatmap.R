@@ -20,8 +20,7 @@ plot_upheno_heatmap <- function(plot_dat,
   value.var <- match.arg(value.var)
   value.var <- value.var[1]
   
-  messager("Creating UPHENO heatmap.")
-  # hpo_ids <- MSTExplorer::example_targets$top_targets$hpo_id
+  messager("Creating UPHENO heatmap.") 
 
   ### Subset phenotypes
   if(!is.null(hpo_ids)) plot_dat <- plot_dat[id1 %in% unique(hpo_ids)]
