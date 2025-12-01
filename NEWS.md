@@ -7,6 +7,7 @@
 * `get_tdd`: Update TTD downloads domain name.
 * Fix minor Roxygen warnings.
 * Install `rols` from GitHub directly since maintainer is not fixing it on Bioc.
+* Remove `biocBiocypher` as Suggest
 
 # KGExplorer 0.99.09
 
