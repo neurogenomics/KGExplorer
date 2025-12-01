@@ -83,10 +83,9 @@ Suggests:
   curl
 Remotes:
   github::monarch-initiative/monarchr,
-  github::phenoscape/rphenoscape,
-  github::vjcitn/biocBiocypher,
-  github::RajLabMSSM/echogithub, 
-  github::kwstat/pals
+  github::phenoscape/rphenoscape, 
+  github::RajLabMSSM/echogithub,  
+  github::lgatto/rols
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 License: GPL-3

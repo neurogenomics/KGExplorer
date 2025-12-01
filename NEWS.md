@@ -6,6 +6,7 @@
 * `get_ontology`: Add `tryCatch` as a safeguard against `rols` bugs.  
 * `get_tdd`: Update TTD downloads domain name.
 * Fix minor Roxygen warnings.
+* Install `rols` from GitHub directly since maintainer is not fixing it on Bioc.
 
 # KGExplorer 0.99.09
 
