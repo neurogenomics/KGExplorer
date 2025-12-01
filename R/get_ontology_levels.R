@@ -10,9 +10,9 @@
 #' Relative mode can be helpful when trying to make plot where nodes are
 #' scaled to the ontology level.
 #' @param method Compute ontology levels using:
-#' \itemize{
-#'  \item{"height" (default)} \link[simona]{dag_height}.
-#'  \item{"depth"} \link[simona]{dag_depth}.
+#' \describe{
+#'  \item{"height" (default)}{\link[simona]{dag_height}.}
+#'  \item{"depth"}{\link[simona]{dag_depth}.}
 #' }
 #' @param absolute Make the levels absolute in the sense that they consider
 #'  the entire ontology (\code{TRUE}).

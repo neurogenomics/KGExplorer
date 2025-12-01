@@ -3,7 +3,7 @@
 #' Get uPheno cross-species mapping data by:
 #' \itemize{
 #' \item{Downloading cross-species phenotype-phenotype mappings.}
-#' \item{Downloading within-spceies phenotype-gene mappings,
+#' \item{Downloading within-species phenotype-gene mappings,
 #' and converting these genes to human orthologs.}
 #' \item{Merging the phenotype-phenotype and phenotype-gene mappings.}
 #' \item{Filtering out any mappings that do not have a human ortholog within

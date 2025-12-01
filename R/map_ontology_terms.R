@@ -33,7 +33,8 @@ map_ontology_terms <- function(ont,
                                ignore_case=TRUE,
                                ignore_char=c("-","/",",","\\."),
                                verbose=1){
-  from <- NULL;
+  from <- input <- NULL;
+  
   to <- match.arg(to)
   if(is.null(terms)) {
     terms <- ont@terms

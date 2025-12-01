@@ -1,13 +1,13 @@
-#' Unlist a \link{data.table}
+#' Unlist a \link[data.table]{data.table}
 #' 
-#' \link{data.table}s can sometimes have columns that are nested lists. 
+#' \link[data.table]{data.table}s can sometimes have columns that are nested lists. 
 #' This function will either drop these columns or convert them into 
 #' character strings.
-#' @param dat \link{data.table}
+#' @param dat \link[data.table]{data.table}
 #' @param drop Drop columns that are lists.
 #' @param collapse Character to collapse lists with.
 #'  Used only when drop is \code{FALSE}.
-#' @returns \link{data.table}
+#' @returns \link[data.table]{data.table}
 #' @export
 #' @examples
 #' dat <- data.table::data.table(a=1:3,b=list(1:2,3:4))

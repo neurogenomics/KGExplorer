@@ -15,16 +15,20 @@ get_ttd <- function(save_dir = cache_dir(),
     TARGNAME <- HIGHEST_STATUS <- NULL;
 
   dir.create(save_dir, showWarnings = FALSE, recursive = TRUE)
-  domain <- "https://db.idrblab.net/ttd/sites/default/files/ttd_database"
+  ### Old domain name
+  # domain <- "https://db.idrblab.net/ttd/sites/default/files/ttd_database"
+  ### New domain name
+  domain <- "https://ttd.idrblab.cn/files/download/"
+  
   files <- c("P1-02-TTD_drug_download.txt",
              "P1-01-TTD_target_download.txt",
              "P1-07-Drug-TargetMapping.xlsx",
              "P1-05-Drug_disease.txt")
   f <- lapply(stats::setNames(files,files),
               function(x){
-    loc <- file.path(save_dir,x)
-    if(!file.exists(loc) & 
-       isFALSE(force_new)){
+    loc <- paste(save_dir,x, sep="/")
+    if(!file.exists(loc) | 
+       isTRUE(force_new)){
       utils::download.file(paste(domain,x,sep="/"),
                            destfile = loc)
     }

@@ -17,7 +17,7 @@ map_upheno_data(
 }
 \arguments{
 \item{pheno_map_method}{Method to use for mapping phenotypes across ontologies.
-\itemize{
+\describe{
 \item{"upheno"}{Use uPheno's phenotype-to-phenotype mappings.
  Contains fewer ontologies but with greater coverage of phenotypes.}
 \item{"monarch"}{Use Monarch's phenotype-to-phenotype mappings.
@@ -26,7 +26,7 @@ Contains more ontologies but with less coverage of phenotypes.
 }}
 
 \item{gene_map_method}{Method to use for mapping genes across species.
-\itemize{
+\describe{
 \item{"monarch"}{Use Monarch's gene-to-gene mappings.}
 }}
 
@@ -54,7 +54,7 @@ A data.table containing the mapped data.
 Get uPheno cross-species mapping data by:
 \itemize{
 \item{Downloading cross-species phenotype-phenotype mappings.}
-\item{Downloading within-spceies phenotype-gene mappings,
+\item{Downloading within-species phenotype-gene mappings,
 and converting these genes to human orthologs.}
 \item{Merging the phenotype-phenotype and phenotype-gene mappings.}
 \item{Filtering out any mappings that do not have a human ortholog within

@@ -4,6 +4,8 @@
 map_medgen <- function(dat,
                        input_col,
                        ...){
+  source_id <- mondo_id <- definition <- DEF <- NULL;
+  
   maps <- get_medgen_maps()
   map <- maps$map
   def <- maps$def

@@ -7,14 +7,14 @@
 prune_ancestors(dat, id_col, ont)
 }
 \arguments{
-\item{dat}{A \link{data.table} with a column of ontology terms.}
+\item{dat}{A \link[data.table]{data.table} with a column of ontology terms.}
 
 \item{id_col}{The name of the column containing ontology term IDs.}
 
 \item{ont}{An ontology of class \link[simona]{ontology_DAG}.}
 }
 \description{
-Prune redundant ancestral terms from a \link{data.table}.
+Prune redundant ancestral terms from a \link[data.table]{data.table}.
 }
 \examples{
 dat <- data.table::data.table(hpo_id=c("HP:0000001","HP:0000002","HP:0000003"),

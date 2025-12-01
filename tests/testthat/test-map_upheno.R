@@ -11,7 +11,7 @@ test_that("map_upheno works", {
     }
   }
   hp <- get_ontology('hp')
-  terms <- hp@terms[1:10]
+  terms <- hp@terms[seq(1000)]
   res <- map_upheno(force_new = FALSE,
                     # pheno_map_method="upheno",
                     terms = terms)

@@ -24,11 +24,11 @@ the x/y coordinates.}
 below the original data points (when plotting them together).}
 }
 \value{
-\itemize{
-\item{\code{x, y}: }{
+\describe{
+ \item{\code{x, y}}{
 The x and y coordinates of the grid points, vectors of length n.
 }
-\item{\code{z}: }{
+ \item{\code{z}}{
 An \code{n[1]} by \code{n[2]} matrix of the estimated density:
 rows correspond to the value of \code{x}, columns to the value of \code{y}.
 }

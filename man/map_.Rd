@@ -159,7 +159,7 @@ mapping terms.}
 \item{verbose}{Print messages.}
 
 \item{pheno_map_method}{Method to use for mapping phenotypes across ontologies.
-\itemize{
+\describe{
 \item{"upheno"}{Use uPheno's phenotype-to-phenotype mappings.
  Contains fewer ontologies but with greater coverage of phenotypes.}
 \item{"monarch"}{Use Monarch's phenotype-to-phenotype mappings.
@@ -168,7 +168,7 @@ Contains more ontologies but with less coverage of phenotypes.
 }}
 
 \item{gene_map_method}{Method to use for mapping genes across species.
-\itemize{
+\describe{
 \item{"monarch"}{Use Monarch's gene-to-gene mappings.}
 }}
 

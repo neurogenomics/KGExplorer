@@ -13,7 +13,7 @@
 #'
 #' @param save_dir Directory to save cached data.
 #' @param pheno_map_method Method to use for mapping phenotypes across ontologies.
-#' \itemize{
+#' \describe{
 #' \item{"upheno"}{Use uPheno's phenotype-to-phenotype mappings.
 #'  Contains fewer ontologies but with greater coverage of phenotypes.}
 #' \item{"monarch"}{Use Monarch's phenotype-to-phenotype mappings.
@@ -21,7 +21,7 @@
 #' }
 #' }
 #' @param gene_map_method Method to use for mapping genes across species.
-#' \itemize{
+#' \describe{
 #' \item{"monarch"}{Use Monarch's gene-to-gene mappings.}
 #' }
 #' @param save_dir Directory to save cached data.

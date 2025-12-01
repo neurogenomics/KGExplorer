@@ -20,7 +20,7 @@ get_ontology_github(
 )
 }
 \arguments{
-\item{name}{\itemize{
+\item{name}{\describe{
 \item{<...>}{Any ontology name from \link{get_ols_options}}
 \item{"mondo"}{
 Import the \href{https://mondo.monarchinitiative.org/}{Mondo} ontology.
@@ -37,7 +37,7 @@ GitHub.}}
 \item{filetype}{File type to search for.}
 
 \item{file}{Can be one of the following:
-\itemize{
+\describe{
 \item{"ontology"}{Creates an \link[simona]{ontology_DAG} R object by
  importing the OBO file directly from the official
  \href{https://github.com/obophenotype/upheno}{uPheno GitHub repository}.}

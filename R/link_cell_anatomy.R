@@ -1,4 +1,6 @@
 link_cell_anatomy <- function(){
+  subject_category <- NULL;
+  
   g <- get_monarch_kg()
   from_categories = paste0("biolink:",
                            c("GrossAnatomicalStructure",

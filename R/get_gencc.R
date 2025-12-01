@@ -19,10 +19,10 @@
 #' See \href{https://thegencc.org/faq.html#validity-termsdelphi-survey}{here}
 #' for more information. 
 #' @returns \link[data.table]{data.table} with columns:
-#' \itemize{
-#' \item{"disease_id": }{Disease ID.}
-#' \item{"gene_symbol": }{Gene symbol.}
-#' \item{"evidence_score": }{Evidence score.}
+#' \describe{
+#' \item{"disease_id"}{Disease ID.}
+#' \item{"gene_symbol"}{Gene symbol.}
+#' \item{"evidence_score"}{Evidence score.}
 #' }
 #'
 #' @export

@@ -183,6 +183,7 @@ scalar, or a named vector that contains a subset of terms that need to be custom
 The full set of parameters can be found at \url{https://graphviz.org/docs/edges/}.
 If the parameter is set to a named vector, it can be named by relation types \code{c("is_a" = ...)},
 or directly relations \code{c("a -> b" = ...)}. Please see the vignette for details.}
+    \item{\code{rankdir}}{The direction of the layout. Only four values are allowed: \code{"TB"}, \code{"LR"}, \code{"BT"} and \code{"RL"}.}
     \item{\code{x}}{the coordinates of points in the plot. Alternatively, a
       single plotting structure, function or \emph{any \R object with a
         \code{plot} method} can be provided.}

@@ -4,7 +4,7 @@
 #' Import an up-to-date ontology directly from from the creators or via the
 #' \href{https://www.ebi.ac.uk/ols4}{EBML-EBI Ontology Lookup Service} API.
 #' @param name
-#' \itemize{
+#' \describe{
 #' \item{<...>}{Any ontology name from \link{get_ols_options}}
 #' \item{"mondo"}{
 #' Import the \href{https://mondo.monarchinitiative.org/}{Mondo} ontology.
@@ -82,9 +82,18 @@ get_ontology <- function(name=c("mondo",
   }
   
   ## Get new file 
-  ol <- rols::Ontologies()
-  #### Assess options available via github and/or rols ####
-  rols_opts <- get_ols_options(ol=ol)
+  rols_opts <- tryCatch({
+    ol <- get_ols_ontologies()
+    #### Assess options available via github and/or rols ####
+    rols_opts <- get_ols_options(ol=ol)
+    rols_opts
+  }, 
+  error=function(e){
+    messager("rols is failing:",e)
+    NULL
+  })
+  
+  
   if(method=="rols" && 
      !name %in% rols_opts){
     messager("Ontology not found via 'rols.' Trying method='github'.")

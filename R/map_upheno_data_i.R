@@ -11,7 +11,9 @@ map_upheno_data_i <- function(pheno_map_method,
     hgnc_label2 <- hgnc_id2 <- gene <- gene_label1 <- gene_label2 <-
     n_genes_db1 <- object <- gene_label <- db <- .  <-
     n_genes_db2 <- subject_taxon_label1 <- subject_taxon_label2 <-
-    phenotype_genotype_score <- equivalence_score <- NULL;
+    phenotype_genotype_score <- equivalence_score <- id2_db <- 
+    gene_taxon_label1 <- gene_taxon_label2 <- hgnc2 <- 
+    NULL;
 
   pheno_map_method <- pheno_map_method[1]
   gene_map_method <- gene_map_method[1]

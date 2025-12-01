@@ -1,7 +1,7 @@
 Package: KGExplorer
 Type: Package
 Title: Biomedical Knowledge Network Construction and Analysis
-Version: 0.99.09
+Version: 0.99.10
 Authors@R:
     c(
     person(given = "Brian",
@@ -87,7 +87,7 @@ Remotes:
   github::vjcitn/biocBiocypher,
   github::RajLabMSSM/echogithub, 
   github::kwstat/pals
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 License: GPL-3
 Config/testthat/edition: 3

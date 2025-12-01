@@ -37,7 +37,7 @@ stopper(..., v = TRUE)
 \item{types}{Types of IDs to include in the data.}
 
 \item{file}{Can be one of the following:
-\itemize{
+\describe{
 \item{"ontology"}{Creates an \link[simona]{ontology_DAG} R object by
  importing the OBO file directly from the official
  \href{https://github.com/obophenotype/upheno}{uPheno GitHub repository}.}

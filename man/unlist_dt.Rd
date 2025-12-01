@@ -2,12 +2,12 @@
 % Please edit documentation in R/unlist_dt.R
 \name{unlist_dt}
 \alias{unlist_dt}
-\title{Unlist a \link{data.table}}
+\title{Unlist a \link[data.table]{data.table}}
 \usage{
 unlist_dt(dat, drop = FALSE, collapse = ";")
 }
 \arguments{
-\item{dat}{\link{data.table}}
+\item{dat}{\link[data.table]{data.table}}
 
 \item{drop}{Drop columns that are lists.}
 
@@ -15,10 +15,10 @@ unlist_dt(dat, drop = FALSE, collapse = ";")
 Used only when drop is \code{FALSE}.}
 }
 \value{
-\link{data.table}
+\link[data.table]{data.table}
 }
 \description{
-\link{data.table}s can sometimes have columns that are nested lists. 
+\link[data.table]{data.table}s can sometimes have columns that are nested lists. 
 This function will either drop these columns or convert them into 
 character strings.
 }

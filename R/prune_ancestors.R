@@ -1,8 +1,8 @@
 #' Prune ancestor
 #'
-#' Prune redundant ancestral terms from a \link{data.table}.
+#' Prune redundant ancestral terms from a \link[data.table]{data.table}.
 #' @export
-#' @param dat A \link{data.table} with a column of ontology terms.
+#' @param dat A \link[data.table]{data.table} with a column of ontology terms.
 #' @param id_col The name of the column containing ontology term IDs.
 #' @inheritParams filter_
 #' @examples

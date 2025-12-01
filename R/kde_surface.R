@@ -11,12 +11,13 @@
 #' @param rescale_z Rescale the z-axis so that the KDE can be positioned
 #'  below the original data points (when plotting them together).
 #' @inheritParams MASS::kde2d
-#' @returns
-#' \itemize{
-#' \item{\code{x, y}: }{
+#' 
+#' @returns 
+#' \describe{
+#'  \item{\code{x, y}}{
 #' The x and y coordinates of the grid points, vectors of length n.
 #' }
-#' \item{\code{z}: }{
+#'  \item{\code{z}}{
 #' An \code{n[1]} by \code{n[2]} matrix of the estimated density:
 #' rows correspond to the value of \code{x}, columns to the value of \code{y}.
 #' }

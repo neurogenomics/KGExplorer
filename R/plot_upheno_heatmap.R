@@ -15,7 +15,7 @@ plot_upheno_heatmap <- function(plot_dat,
                                  height = 15,
                                  width = 10){
   requireNamespace("ComplexHeatmap")
-  hpo_id <- object_label1 <- NULL;
+  hpo_id <- object_label1 <- id1 <- NULL;
   set.seed(2023)
   value.var <- match.arg(value.var)
   value.var <- value.var[1]

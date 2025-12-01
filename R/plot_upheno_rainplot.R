@@ -4,7 +4,7 @@ plot_upheno_rainplot <- function(plot_dat){
   requireNamespace("ggdist")
   requireNamespace("tidyquant")
   subject_taxon_label2 <- n_phenotypes <- n_genes_intersect <- n_genes_db1 <-
-    object_db <- NULL;
+    object_db <- gene_taxon_label2 <- db2 <- NULL;
 
   messager("Creating UPHENO rainplot")
   ### Plot proportion of intersecting orthologs per ontology ####
@@ -13,9 +13,9 @@ plot_upheno_rainplot <- function(plot_dat){
                       "\n(n = ",n_phenotypes," phenotypes)"),
              y=(n_genes_intersect/n_genes_db1),
              fill=factor(db2))) +
-    ggplot2::facet_grid(db2~.,
-               scales = "free_y",
-               space = "free_y") +
+    ggplot2::facet_grid(rows=ggplot2::vars(db2),
+                       scales = "free_y",
+                       space = "free_y") +
     # add half-violin from {ggdist} package
     ggdist::stat_halfeye(
       # adjust bandwidth

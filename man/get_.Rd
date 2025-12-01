@@ -134,7 +134,7 @@ get_mondo_maps(
 
 get_mondo_maps_files(map_types, map_to, save_dir)
 
-get_ols_options(ol = rols::Ontologies())
+get_ols_options(ol = NULL)
 
 get_ontology(
   name = c("mondo", "hp", "upheno", "uberon", "cl"),
@@ -198,7 +198,7 @@ get_version(obj, return_version = FALSE, verbose = TRUE)
 
 \item{annotate}{Add variant annotations with \link{map_variants}.}
 
-\item{name}{\itemize{
+\item{name}{\describe{
 \item{<...>}{Any ontology name from \link{get_ols_options}}
 \item{"mondo"}{
 Import the \href{https://mondo.monarchinitiative.org/}{Mondo} ontology.
@@ -245,9 +245,9 @@ Passes to \link{get_monarch_files}.}
 \item{run_map_mondo}{Run \link{map_mondo} to map MONDO IDs to disease IDs.}
 
 \item{method}{Compute ontology levels using:
-\itemize{
- \item{"height" (default)} \link[simona]{dag_height}.
- \item{"depth"} \link[simona]{dag_depth}.
+\describe{
+ \item{"height" (default)}{\link[simona]{dag_height}.}
+ \item{"depth"}{\link[simona]{dag_depth}.}
 }}
 
 \item{...}{
@@ -388,7 +388,7 @@ are larger than the child terms.}
 \link[orthogene]{map_genes}.}
 
 \item{file}{Can be one of the following:
-\itemize{
+\describe{
 \item{"ontology"}{Creates an \link[simona]{ontology_DAG} R object by
  importing the OBO file directly from the official
  \href{https://github.com/obophenotype/upheno}{uPheno GitHub repository}.}
@@ -416,10 +416,10 @@ Data.
 A named list of data.tables of AlphaMissense predictions.
 
 \link[data.table]{data.table} with columns:
-\itemize{
-\item{"disease_id": }{Disease ID.}
-\item{"gene_symbol": }{Gene symbol.}
-\item{"evidence_score": }{Evidence score.}
+\describe{
+\item{"disease_id"}{Disease ID.}
+\item{"gene_symbol"}{Gene symbol.}
+\item{"evidence_score"}{Evidence score.}
 }
 
 data.table

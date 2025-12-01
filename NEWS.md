@@ -1,3 +1,12 @@
+# KGExplorer 0.99.10
+
+## Bug fixes
+* `get_ols_options`: Fix due to changes in rols namespace: 
+  https://github.com/lgatto/rols/blob/master/NEWS.md#rols-299
+* `get_ontology`: Add `tryCatch` as a safeguard against `rols` bugs.  
+* `get_tdd`: Update TTD downloads domain name.
+* Fix minor Roxygen warnings.
+
 # KGExplorer 0.99.09
 
 ## Bug fixes
