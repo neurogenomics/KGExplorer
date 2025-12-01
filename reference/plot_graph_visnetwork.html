@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">KGExplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.09</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.10</span>
       </span>
     </div>
 
@@ -140,15 +140,15 @@
 
 
 <dt id="arg-selectedby">selectedBy<a class="anchor" aria-label="anchor" href="#arg-selectedby"></a></dt>
-<dd><p>: Custom option. Character or a named list. Add a multiple selection based on column of node data.frame creating an HTML select element. Not available for DOT and Gephi.</p><ul><li><p>"variable" : Character. Column name of selection variable.</p></li>
-<li><p>"values : Optional. Vector of possible values. Default to all values in nodes data.frame.</p></li>
-<li><p>"selected" : Optional. Integer/Character. Initial selection. Default to NULL</p></li>
-<li><p>"style" : Optional. Character. HTML style of list. Default to 'width: 150px; height: 26px'.</p></li>
-<li><p>"multiple" : Optional. Boolean. Default to FALSE. If TRUE, you can affect multiple groups per nodes using a comma ("gr1,gr2")</p></li>
-<li><p>"hideColor" : Optional. String. Color for hidden nodes/edges. Use a rgba definition. Default to rgba(200,200,200,0.5)</p></li>
-<li><p>"main" : Optional. Default to "Select by variable"</p></li>
-<li><p>"sort" : Optional. If values is NULL, sort all possible values ?. Default to TRUE</p></li>
-<li><p>"highlight" : Optional. Boolean. Run highlightNearest if defined on each selected node ? Default to FALSE</p></li>
+<dd><p>: Custom option. Character or a named list. Add a multiple selection based on column of node data.frame creating an HTML select element. Not available for DOT and Gephi.</p><ul><li><p>"variable" Character. Column name of selection variable.</p></li>
+<li><p>"values Optional. Vector of possible values. Default to all values in nodes data.frame.</p></li>
+<li><p>"selected" Optional. Integer/Character. Initial selection. Default to NULL</p></li>
+<li><p>"style" Optional. Character. HTML style of list. Default to 'width: 150px; height: 26px'.</p></li>
+<li><p>"multiple" Optional. Boolean. Default to FALSE. If TRUE, you can affect multiple groups per nodes using a comma ("gr1,gr2")</p></li>
+<li><p>"hideColor" Optional. String. Color for hidden nodes/edges. Use a rgba definition. Default to rgba(200,200,200,0.5)</p></li>
+<li><p>"main" Optional. Default to "Select by variable"</p></li>
+<li><p>"sort" Optional. If values is NULL, sort all possible values ?. Default to TRUE</p></li>
+<li><p>"highlight" Optional. Boolean. Run highlightNearest if defined on each selected node ? Default to FALSE</p></li>
 </ul></dd>
 
 
@@ -169,33 +169,32 @@
 
 
 <dt id="arg-forceatlas-based">forceAtlas2Based<a class="anchor" aria-label="anchor" href="#arg-forceatlas-based"></a></dt>
-<dd><p>named list of options</p><ul><li><p>"theta" : Number. Default to 0.5. This parameter determines the boundary between consolidated long range forces and individual short range forces. To oversimplify higher values are faster but generate more errors, lower values are slower but with less errors.</p></li>
-<li><p>"gravitationalConstant" : Number. Default to -50. Gravity attracts. We like repulsion. So the value is negative. If you want the repulsion to be stronger, decrease the value (so -10000, -50000).</p></li>
-<li><p>"centralGravity" : Number. Default to 0.01. There is a central gravity attractor to pull the entire network back to the center.</p></li>
-<li><p>"springLength" : Number. Default to 100. The edges are modelled as springs. This springLength here is the the rest length of the spring.</p></li>
-<li><p>"springConstant" : Number. Default to 0.08. This is how 'sturdy' the springs are. Higher values mean stronger springs.</p></li>
-<li><p>"damping" : Number. Default to 0.4. Accepted range: [0 .. 1]. The damping factor is how much of the velocity from the previous physics simulation iteration carries over to the next iteration.</p></li>
-<li><p>"avoidOverlap" : Number. Default to 0. Accepted range: [0 .. 1]. When larger than 0, the size of the node is taken into account. The distance will be calculated from the radius of the encompassing circle of the node for both the gravity model. Value 1 is maximum overlap avoidance.</p></li>
+<dd><p>named list of options</p><ul><li><p>"theta" Number. Default to 0.5. This parameter determines the boundary between consolidated long range forces and individual short range forces. To oversimplify higher values are faster but generate more errors, lower values are slower but with less errors.</p></li>
+<li><p>"gravitationalConstant" Number. Default to -50. Gravity attracts. We like repulsion. So the value is negative. If you want the repulsion to be stronger, decrease the value (so -10000, -50000).</p></li>
+<li><p>"centralGravity" Number. Default to 0.01. There is a central gravity attractor to pull the entire network back to the center.</p></li>
+<li><p>"springLength" Number. Default to 100. The edges are modelled as springs. This springLength here is the the rest length of the spring.</p></li>
+<li><p>"springConstant" Number. Default to 0.08. This is how 'sturdy' the springs are. Higher values mean stronger springs.</p></li>
+<li><p>"damping" Number. Default to 0.4. Accepted range: [0 .. 1]. The damping factor is how much of the velocity from the previous physics simulation iteration carries over to the next iteration.</p></li>
+<li><p>"avoidOverlap" Number. Default to 0. Accepted range: [0 .. 1]. When larger than 0, the size of the node is taken into account. The distance will be calculated from the radius of the encompassing circle of the node for both the gravity model. Value 1 is maximum overlap avoidance.</p></li>
 </ul></dd>
 
 
 <dt id="arg-scaling">scaling<a class="anchor" aria-label="anchor" href="#arg-scaling"></a></dt>
-<dd><p>: Named list.  If the value option is specified, the size of the nodes will be scaled according to the properties in this object.</p><ul><li><p>"min" :  Number. Default to 10. If nodes have a value, their sizes are determined by the value, the scaling function and the min max values.</p></li>
-<li><p>"max" : Number. Default to 30. This is the maximum allowed size when the nodes are scaled using the value option.</p></li>
-<li><p>"label" : Named list or Boolean. Default to Named list. This can be false if the label is not allowed to scale with the node. If true it will scale using default settigns. For further customization, you can supply an object.
-   </p><ul><li><p>"enabled" : Boolean. Default to false. Toggle the scaling of the label on or off. If this option is not defined, it is set to true if any of the properties in this object are defined.</p></li>
-<li><p>"min" : Number. Default to 14. The minimum font-size used for labels when scaling.</p></li>
-<li><p>"max" : Number. Default to 30. The maximum font-size used for labels when scaling.</p></li>
-<li><p>"maxVisible" :   Number. Default to 30. When zooming in, the font is drawn larger as well. You can limit the perceived font size using this option. If set to 30, the font will never look larger than size 30 zoomed at 100%.</p></li>
-<li><p>"drawThreshold" : Number. Default to 5. When zooming out, the font will be drawn smaller. This defines a lower limit for when the font is drawn. When using font scaling, you can use this together with the maxVisible to first show labels of important nodes when zoomed out and only show the rest when zooming in.</p></li>
+<dd><p>: Named list.  If the value option is specified, the size of the nodes will be scaled according to the properties in this object.</p><ul><li><p>"min"  Number. Default to 10. If nodes have a value, their sizes are determined by the value, the scaling function and the min max values.</p></li>
+<li><p>"max" Number. Default to 30. This is the maximum allowed size when the nodes are scaled using the value option.</p></li>
+<li><p>"label" Named list or Boolean. Default to Named list. This can be false if the label is not allowed to scale with the node. If true it will scale using default settigns. For further customization, you can supply an object.</p><ul><li><p>"enabled" Boolean. Default to false. Toggle the scaling of the label on or off. If this option is not defined, it is set to true if any of the properties in this object are defined.</p></li>
+<li><p>"min" Number. Default to 14. The minimum font-size used for labels when scaling.</p></li>
+<li><p>"max" Number. Default to 30. The maximum font-size used for labels when scaling.</p></li>
+<li><p>"maxVisible"   Number. Default to 30. When zooming in, the font is drawn larger as well. You can limit the perceived font size using this option. If set to 30, the font will never look larger than size 30 zoomed at 100%.</p></li>
+<li><p>"drawThreshold" Number. Default to 5. When zooming out, the font will be drawn smaller. This defines a lower limit for when the font is drawn. When using font scaling, you can use this together with the maxVisible to first show labels of important nodes when zoomed out and only show the rest when zooming in.</p></li>
 </ul></li>
-<li><p>"customScalingFunction" : Function. If nodes have value fields, this function determines how the size of the nodes are scaled based on their values.</p></li>
+<li><p>"customScalingFunction" Function. If nodes have value fields, this function determines how the size of the nodes are scaled based on their values.</p></li>
 </ul></dd>
 
 
 <dt id="arg-arrows">arrows<a class="anchor" aria-label="anchor" href="#arg-arrows"></a></dt>
 <dd><p>: Named list or String. To draw an arrow with default settings a string can be supplied. For example: 'to, from,middle' or 'to;from', any combination with any seperating symbol is fine.
-If you want to control the size of the arrowheads, you can supply an object. See <a href="https://rdrr.io/pkg/visNetwork/man/visDocumentation.html" class="external-link">visDocumentation</a></p></dd>
+If you want to control the size of the arrowheads, you can supply an object. See  <a href="https://rdrr.io/pkg/visNetwork/man/visDocumentation.html" class="external-link">visDocumentation</a></p></dd>
 
 
 <dt id="arg-smooth">smooth<a class="anchor" aria-label="anchor" href="#arg-smooth"></a></dt>
@@ -228,14 +227,14 @@ to highlight.</p></dd>
 
 
 <dt id="arg-main">main<a class="anchor" aria-label="anchor" href="#arg-main"></a></dt>
-<dd><p>: For add a title. Character or a named list.</p><ul><li><p>"text" : Character. Title.</p></li>
-<li><p>"style" : Optional. Character. HTML style of title. Default to 'font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;'.</p></li>
+<dd><p>: For add a title. Character or a named list.</p><ul><li><p>"text" Character. Title.</p></li>
+<li><p>"style" Optional. Character. HTML style of title. Default to 'font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;'.</p></li>
 </ul></dd>
 
 
 <dt id="arg-submain">submain<a class="anchor" aria-label="anchor" href="#arg-submain"></a></dt>
-<dd><p>: For add a subtitle. Character or a named list.</p><ul><li><p>"text" : Character. Subtitle.</p></li>
-<li><p>"style" : Optional. Character. HTML style of submain. Default to 'font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;'.</p></li>
+<dd><p>: For add a subtitle. Character or a named list.</p><ul><li><p>"text" Character. Subtitle.</p></li>
+<li><p>"style" Optional. Character. HTML style of submain. Default to 'font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;'.</p></li>
 </ul></dd>
 
 
@@ -249,7 +248,7 @@ as a self-contained HTML file.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_.html">get_ontology</a></span><span class="op">(</span><span class="st">"hp"</span>, terms<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-11-24.rds</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Randomly sampling 10 term(s).</span>
 <span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="to_.html">ontology_to</a></span><span class="op">(</span><span class="va">ont</span>, to<span class="op">=</span><span class="st">"tbl_graph"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
@@ -260,7 +259,7 @@ as a self-contained HTML file.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding hoverboxes to data.table.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using palette: okabe</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Can't find 'name' in node data.frame</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Saving plot --&gt; /tmp/RtmpgTHNxl/file49731be858bb_visnetwork.html</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Saving plot --&gt; /tmp/RtmpNyOopQ/file61692b4851b2_visnetwork.html</span>
 </code></pre></div>
     </div>
   </div>
@@ -275,7 +274,7 @@ as a self-contained HTML file.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

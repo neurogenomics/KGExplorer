@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">KGExplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.09</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.10</span>
       </span>
     </div>
 
@@ -147,7 +147,7 @@
 <span></span>
 <span><span class="fu">get_mondo_maps_files</span><span class="op">(</span><span class="va">map_types</span>, <span class="va">map_to</span>, <span class="va">save_dir</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_ols_options</span><span class="op">(</span>ol <span class="op">=</span> <span class="fu">rols</span><span class="fu">::</span><span class="fu"><a href="http://lgatto.github.io/rols/reference/Ontologies.html" class="external-link">Ontologies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">get_ols_options</span><span class="op">(</span>ol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">get_ontology</span><span class="op">(</span></span>
 <span>  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mondo"</span>, <span class="st">"hp"</span>, <span class="st">"upheno"</span>, <span class="st">"uberon"</span>, <span class="st">"cl"</span><span class="op">)</span>,</span>
@@ -239,16 +239,21 @@ monarchr R package (abandoned project?)</a></p>
 
 
 <dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
-<dd><ul><li><p>&lt;...&gt;Any ontology name from get_ols_options</p></li>
-<li><p>"mondo"
-Import the <a href="https://mondo.monarchinitiative.org/" class="external-link">Mondo</a> ontology.
+<dd><dl><dt>&lt;...&gt;</dt>
+<dd><p>Any ontology name from get_ols_options</p></dd>
+
+<dt>"mondo"</dt>
+<dd><p>Import the <a href="https://mondo.monarchinitiative.org/" class="external-link">Mondo</a> ontology.
 <a href="https://github.com/monarch-initiative/mondo/release" class="external-link">
-GitHub.</a>.</p></li>
-<li><p>"hpo"
-Import the <a href="https://hpo.jax.org/app/" class="external-link">Human Phenotype Ontology</a>.
+GitHub.</a></p></dd>
+.
+<dt>"hpo"</dt>
+<dd><p>Import the <a href="https://hpo.jax.org/app/" class="external-link">Human Phenotype Ontology</a>.
 <a href="https://github.com/obophenotype/human-phenotype-ontology/release" class="external-link">
-GitHub.</a></p></li>
-</ul></dd>
+GitHub.</a></p></dd>
+
+
+</dl></dd>
 
 
 <dt id="arg-package">package<a class="anchor" aria-label="anchor" href="#arg-package"></a></dt>
@@ -305,9 +310,14 @@ Passes to get_monarch_files.</p></dd>
 
 
 <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
-<dd><p>Compute ontology levels using:</p><ul><li><p>"height" (default) <a href="https://rdrr.io/pkg/simona/man/dag_depth.html" class="external-link">dag_height</a>.</p></li>
-<li><p>"depth" <a href="https://rdrr.io/pkg/simona/man/dag_depth.html" class="external-link">dag_depth</a>.</p></li>
-</ul></dd>
+<dd><p>Compute ontology levels using:</p><dl><dt>"height" (default)</dt>
+<dd><p><a href="https://rdrr.io/pkg/simona/man/dag_depth.html" class="external-link">dag_height</a>.</p></dd>
+
+ <dt>"depth"</dt>
+<dd><p><a href="https://rdrr.io/pkg/simona/man/dag_depth.html" class="external-link">dag_depth</a>.</p></dd>
+
+
+</dl></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -507,7 +517,7 @@ Can be a character vector of one or more column names.</p></dd>
 
 
 <dt id="arg-ol">ol<a class="anchor" aria-label="anchor" href="#arg-ol"></a></dt>
-<dd><p>An <a href="http://lgatto.github.io/rols/reference/Ontologies.html" class="external-link">Ontologies</a> object.</p></dd>
+<dd><p>An <code><a href="http://lgatto.github.io/rols/reference/olsOntologies.html" class="external-link">rols::olsOntologies</a></code> object.</p></dd>
 
 
 <dt id="arg-filetype">filetype<a class="anchor" aria-label="anchor" href="#arg-filetype"></a></dt>
@@ -545,7 +555,8 @@ Will get the closest ancestor to this level if none have this exact level.</p></
 
 
 <dt id="arg-include-self">include_self<a class="anchor" aria-label="anchor" href="#arg-include-self"></a></dt>
-<dd><p>For <code>dag_offspring()</code> and <code>dag_ancestors()</code>, this controls whether to also include the query term itself.</p></dd>
+<dd><p>For dag_offspring() and dag_ancestors(), this controls
+whether to also include the query term itself.</p></dd>
 
 
 <dt id="arg-include-alternative-terms">include_alternative_terms<a class="anchor" aria-label="anchor" href="#arg-include-alternative-terms"></a></dt>
@@ -584,20 +595,27 @@ are larger than the child terms.</p></dd>
 
 
 <dt id="arg-file">file<a class="anchor" aria-label="anchor" href="#arg-file"></a></dt>
-<dd><p>Can be one of the following:</p><ul><li><p>"ontology"Creates an <a href="https://rdrr.io/pkg/simona/man/ontology_DAG-class.html" class="external-link">ontology_DAG</a> R object by
+<dd><p>Can be one of the following:</p><dl><dt>"ontology"</dt>
+<dd><p>Creates an <a href="https://rdrr.io/pkg/simona/man/ontology_DAG-class.html" class="external-link">ontology_DAG</a> R object by
  importing the OBO file directly from the official
- <a href="https://github.com/obophenotype/upheno" class="external-link">uPheno GitHub repository</a>.</p></li>
-<li><p>"bestmatches"Returns a merged table with the best matches between
+ <a href="https://github.com/obophenotype/upheno" class="external-link">uPheno GitHub repository</a>.</p></dd>
+
+<dt>"bestmatches"</dt>
+<dd><p>Returns a merged table with the best matches between
  human and non-human homologous phenotypes (from multiple species).
  Distributed by the official
  <a href="https://github.com/obophenotype/upheno/tree/master/mappings" class="external-link">
- uPheno GitHub repository</a>.</p></li>
-<li><p>"upheno_mapping"Return a merged table with matches between human
+ uPheno GitHub repository</a>.</p></dd>
+
+<dt>"upheno_mapping"</dt>
+<dd><p>Return a merged table with matches between human
 and non-human homologous phenotypes (from multiple species).
 Distributed by the
  <a href="https://data.monarchinitiative.org/upheno2/current/upheno-release/all/index.html" class="external-link">
- Monarch Initiative server</a>.</p></li>
-</ul></dd>
+ Monarch Initiative server</a>.</p></dd>
+
+
+</dl></dd>
 
 
 <dt id="arg-obj">obj<a class="anchor" aria-label="anchor" href="#arg-obj"></a></dt>
@@ -616,10 +634,17 @@ Distributed by the
     <h2>Value</h2>
     <p>Data.</p>
 <p>A named list of data.tables of AlphaMissense predictions.</p>
-<p><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a> with columns:</p><ul><li><p>"disease_id": Disease ID.</p></li>
-<li><p>"gene_symbol": Gene symbol.</p></li>
-<li><p>"evidence_score": Evidence score.</p></li>
-</ul><p>data.table</p>
+<p><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a> with columns:</p><dl><dt>"disease_id"</dt>
+<dd><p>Disease ID.</p></dd>
+
+<dt>"gene_symbol"</dt>
+<dd><p>Gene symbol.</p></dd>
+
+<dt>"evidence_score"</dt>
+<dd><p>Evidence score.</p></dd>
+
+
+</dl><p>data.table</p>
 <p><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a></p>
 <p><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a> of mappings.</p>
 <p><a href="https://rdrr.io/pkg/simona/man/ontology_DAG-class.html" class="external-link">ontology_DAG</a></p>
@@ -770,7 +795,7 @@ HPO GitHub Releases page</a>.</p></li>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span><span class="st">"hp"</span>, terms<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-11-24.rds</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Randomly sampling 10 term(s).</span>
 <span class="r-in"><span><span class="va">def</span> <span class="op">&lt;-</span> <span class="fu">get_definitions</span><span class="op">(</span><span class="va">ont</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">get_gencc</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -778,12 +803,16 @@ HPO GitHub Releases page</a>.</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Evidence scores for: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  - 11050 diseases </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  - 5533 genes</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Version: 2025-08-02</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Version: 2025-12-01</span>
 <span class="r-in"><span><span class="va">genes_diseases</span> <span class="op">&lt;-</span> <span class="fu">get_genes_disease</span><span class="op">(</span>method<span class="op">=</span><span class="st">"tsv"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering with `maps`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Files found: 2</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Constructing data: causal_gene &lt;--&gt; disease</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Coercing 'character' RHS to 'logical' to match the type of column 3 named 'subject_category'.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Coercing 'character' RHS to 'logical' to match the type of column 10 named 'object_category'.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Constructing data: correlated_gene &lt;--&gt; disease</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Coercing 'character' RHS to 'logical' to match the type of column 3 named 'subject_category'.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Coercing 'character' RHS to 'logical' to match the type of column 10 named 'object_category'.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> genes(s): 0</span>
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">get_monarch</span><span class="op">(</span>maps<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"causal_gene"</span>,<span class="st">"disease"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering with `maps`.</span>
@@ -800,71 +829,69 @@ HPO GitHub Releases page</a>.</p></li>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">get_mondo_maps</span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span> </span></span>
 <span class="r-in"><span><span class="va">mondo</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span>name<span class="op">=</span><span class="st">"mondo"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ iterating 8 done (3.8/s) | 2.1s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ iterating 14 done (4.8/s) | 2.9s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> rols is failing: Error: unable to find an inherited method for function ‘olsNamespace’ for signature ‘object = "standardGeneric"’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing ontology via GitHub.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Identifying latest release for: monarch-initiative/mondo</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Preparing ontology_index object from: https://github.com/monarch-initiative/mondo/releases/download/v2025-07-01/mondo.obo</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Typedef] sections in the obo file [276/276]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> remove 2 obsolete terms</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [1000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [2000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [3000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [4000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [5000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [6000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [7000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [8000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [9000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [10000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [11000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [12000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [13000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [14000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [15000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [16000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [17000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [18000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [19000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [20000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [21000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [22000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [23000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [24000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [25000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [26000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [27000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [28000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [29000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [30000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [31000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [32000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [33000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [34000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [35000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [36000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [37000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [38000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [39000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [40000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [41000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [42000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [43000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [44000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [45000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [46000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [47000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [48000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [49000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [50000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [51000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [52000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [53000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [54000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [55000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [56000/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [56509/56509]</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> remove 4346 obsolete terms</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Preparing ontology_index object from: https://github.com/monarch-initiative/mondo/releases/download/v2025-11-04/mondo.obo</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Typedef] sections in the obo file [274/274]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [1000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [2000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [3000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [4000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [5000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [6000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [7000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [8000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [9000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [10000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [11000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [12000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [13000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [14000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [15000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [16000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [17000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [18000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [19000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [20000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [21000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [22000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [23000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [24000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [25000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [26000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [27000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [28000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [29000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [30000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [31000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [32000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [33000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [34000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [35000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [36000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [37000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [38000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [39000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [40000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [41000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [42000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [43000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [44000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [45000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [46000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [47000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [48000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [49000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [50000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [51000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [52000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [53000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [54000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [55000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [56000/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing [Term] sections in the obo file [56753/56753]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> remove 4464 obsolete terms</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> There are more than one root:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   BFO:0000001, CHEBI:24431, CHEBI:36342, CHEBI:50906, ECTO:0000015,</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     and other 29 terms ...</span>
@@ -872,25 +899,25 @@ HPO GitHub Releases page</a>.</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding term metadata.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> IC_method: IC_offspring</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding ancestor metadata.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 52,155 IDs.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 52,281 IDs.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 219 ancestors found at level 2</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to names.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converted ontology to: adjacency </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 52,155 IDs.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Caching file --&gt; /github/home/.cache/R/KGExplorer/ontologies/github/mondo_v2025-07-01.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 52,281 IDs.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Caching file --&gt; /github/home/.cache/R/KGExplorer/ontologies/github/mondo_v2025-11-04.rds</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span>  <span class="va">hp</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span>name<span class="op">=</span><span class="st">"hp"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">upheno</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span>name<span class="op">=</span><span class="st">"upheno"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span><span class="st">"hp"</span>, terms<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-11-24.rds</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Randomly sampling 10 term(s).</span>
 <span class="r-in"><span><span class="va">dict</span> <span class="op">&lt;-</span> <span class="fu">get_ontology_dict</span><span class="op">(</span><span class="va">ont</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ont</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span><span class="st">"hp"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-11-24.rds</span>
 <span class="r-in"><span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="va">ont</span><span class="op">@</span><span class="va">terms</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">lvls</span> <span class="op">&lt;-</span> <span class="fu">get_ontology_levels</span><span class="op">(</span><span class="va">ont</span>, terms <span class="op">=</span> <span class="va">terms</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 10 IDs.</span>
@@ -913,32 +940,31 @@ HPO GitHub Releases page</a>.</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 1 organism identified from search: hsapiens</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 13,793 / 27,118 (50.86%) genes mapped.</span>
 <span class="r-in"><span><span class="va">upheno</span> <span class="op">&lt;-</span> <span class="fu">get_upheno</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ iterating 10 done (4.9/s) | 2s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ iterating 14 done (5.5/s) | 2.6s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing 341 &lt;owl:ObjectProperty&gt; ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> rols is failing: Error: unable to find an inherited method for function ‘olsNamespace’ for signature ‘object = "standardGeneric"’</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing 344 &lt;owl:ObjectProperty&gt; ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> remove 2 obsolete terms</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing 193247 &lt;owl:Class&gt; ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing 199799 &lt;rdf:Description&gt; ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> remove 17592 obsolete terms</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing 193296 &lt;owl:Class&gt; ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsing 199997 &lt;rdf:Description&gt; ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> remove 17633 obsolete terms</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> There are more than one root:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   BFO:0000001, BSPO:0000005, BSPO:0000010, BSPO:0000070, BSPO:0000086,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     and other 14 terms ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     and other 13 terms ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   A super root (~~all~~) is added.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding term metadata.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> IC_method: IC_offspring</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding ancestor metadata.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 175,653 IDs.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 76 ancestors found at level 2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 175,661 IDs.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 77 ancestors found at level 2</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to names.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Translating ontology terms to ids.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converted ontology to: adjacency </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 175,653 IDs.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Getting absolute ontology level for 175,661 IDs.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Caching file --&gt; /github/home/.cache/R/KGExplorer/ontologies/github/upheno.rds</span>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">get_ontology</span><span class="op">(</span><span class="st">"hp"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached ontology file (1/1):</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-05-06.rds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /github/home/.cache/R/KGExplorer/ontologies/github/hp_v2025-11-24.rds</span>
 <span class="r-in"><span><span class="fu">get_version</span><span class="op">(</span>obj<span class="op">=</span><span class="va">obj</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Version: 2025-05-06</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Version: 2025-11-24</span>
 </code></pre></div>
     </div>
   </div>
@@ -953,7 +979,7 @@ HPO GitHub Releases page</a>.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>
